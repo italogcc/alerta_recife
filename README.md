@@ -34,20 +34,13 @@ Quais as ferramentas, linguagens, programas e etc. utilizados para
 construir e
 executar a solução proposta?
 ## Contribuidores
-Colocar o nome do usuário (username) do GitHub, endereço do perfil no
-GitHub,
-nome completo e o papel de todos os participantes do projeto, bem como
-o
-professor orientador, conforme o exemplo abaixo:
-- [@fulano](https://github.com/fulano) como Fulano da Silva
-(Arquiteto)
-- [@beltrano](https://github.com/beltrano) como Beltrano da Silva
+Este projeto está sob a orientação do professor Vilmar Santos Nepomuceno do IFPE com a colaboração dos seguintes alunos:
+- [@hcbarros](https://github.com/hcbarros) como Henrique Caetano de Barros
 (Desenvolvedor)
-- [@zutana](https://github.com/zutana) como Zutana da Silva
-(Desenvolvedora)
-- [@citana](https://github.com/citana) como Citana da Silva
-(Desenvolvedora)
-- [@sicrano](https://github.com/sicrano) como Sicrano da Silva
-(Orientador)## Licença
+- [@italogcc](https://github.com/italogcc) como Italo Garcia Campos do Canto
+(Desenvolvedor)
+- [@rosaalexandrino](https://github.com/rosaalexandrino) como Rosa Alexandrino
+(Desenvolvedora e arquiteta)
+## Licença
 Caso sinta necessidade defina uma licença para o seu
 aplicativo/sistema/solução.
