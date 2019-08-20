@@ -1,8 +1,8 @@
-# alerta_recife
+# ALERTA_RECIFE
 Projeto Alerta Recife
 
 Este é um modelo de descrição do projeto.
-# NOME DO APLICATIVO/SISTEMA/SOLUÇÃO
+
 Escolher um nome para o aplicativo/sistema/solução proposto por vocês.
 Escolham
 um nome **SIMPLES**, que seja **FÁCIL** de ser escrito e lembrado e
