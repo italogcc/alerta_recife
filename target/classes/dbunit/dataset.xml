@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <TB_USUARIO email ="rosa@gmail.com" senha = "123" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
+    <TB_ADMINISTRADOR id_admin = "1" matricula = "12343" cargo = "GERENTE" />
+</dataset>

@@ -1,5 +1,6 @@
 package ifpe.recife.tads.alerta_recife;
 
+import java.io.Serializable;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TB_USUARIO")
 @Access(AccessType.FIELD)
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario {
+public class Usuario implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,37 +25,24 @@ public class Usuario {
     Long id;
 
     @NotNull
-    @Column(name="EMAIL", unique = true, length = 100)
+    @Column(name="EMAIL", unique = true)
     private String email;
 
     @NotNull
-    @Column(name="SENHA",length = 100)
+    @Column(name="SENHA")
     private String senha;
 
     @NotNull
-    @Column(name="PRIMEIRO_NOME",length = 30)
+    @Column(name="PRIMEIRO_NOME")
     private String primeiroNome;
     
     @NotNull
-    @Column(name="ULTIMO_NOME",length = 30)
+    @Column(name="ULTIMO_NOME")
     private String ultimoNome;
 
     @NotNull
     @Column(name="HABILITADO")
-    private boolean habilitado = false;
-
-    public Usuario() {
-    
-    }
-    
-    public Usuario(Long id, String email, String senha, String primeiroNome, String ultimoNome, boolean habilitado) {
-        this.id = id;
-        this.email = email;
-        this.senha = senha;
-        this.primeiroNome = primeiroNome;
-        this.ultimoNome = ultimoNome;
-        this.habilitado = habilitado;
-    }
+    private boolean habilitado;
 
     public Long getId() {
         return id;

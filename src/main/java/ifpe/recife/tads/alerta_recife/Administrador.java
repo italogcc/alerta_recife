@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="ADMINISTRADOR")
+@Table(name="TB_ADMINISTRADOR")
 @Access(AccessType.FIELD)
 @DiscriminatorValue(value = "ADMIN")
 @PrimaryKeyJoinColumn(name = "ID_ADMIN", referencedColumnName = "ID_USUARIO")
@@ -22,7 +22,31 @@ public class Administrador extends Usuario implements Serializable {
     private String matricula;
 
     @NotNull
-    @Column(name="CARGO", length = 1)
+    @Column(name="CARGO", length = 15)
     private Cargo cargo; 
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 }
