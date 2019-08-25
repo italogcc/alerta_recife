@@ -10,11 +10,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TB_USUARIO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Usuario.RecuperarPorEmail",
+                    query = "SELECT u FROM Usuario u WHERE u.email = :email"
+            )
+            ,
+            @NamedQuery(
+                    name = "Usuario.RecuperarAtivos",
+                    query = "SELECT u FROM Usuario u WHERE u.habilitado = :habilitado ORDER BY u.primeiroNome"
+            )
+        }
+)
 @Access(AccessType.FIELD)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable{
@@ -25,19 +40,19 @@ public class Usuario implements Serializable{
     Long id;
 
     @NotNull
-    @Column(name="EMAIL", unique = true)
+    @Column(name="EMAIL", unique = true, length = 100)
     private String email;
 
     @NotNull
-    @Column(name="SENHA")
+    @Column(name="SENHA", length = 15)
     private String senha;
 
     @NotNull
-    @Column(name="PRIMEIRO_NOME")
+    @Column(name="PRIMEIRO_NOME", length = 50)
     private String primeiroNome;
     
     @NotNull
-    @Column(name="ULTIMO_NOME")
+    @Column(name="ULTIMO_NOME",length = 50)
     private String ultimoNome;
 
     @NotNull

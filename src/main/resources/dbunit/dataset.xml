@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <TB_USUARIO email ="rosa@gmail.com" senha = "123" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
-    <TB_ADMINISTRADOR id_admin = "1" matricula = "12343" cargo = "GERENTE" />
+    <TB_USUARIO email ="rosaalexandrino@gmail.com" senha = "hBuxA23" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
+    <TB_USUARIO email ="igormoraes@gmail.com" senha = "LbyI20" primeiro_nome = "Igor" ultimo_nome = "Moraes" habilitado = "1" />
+    <TB_USUARIO email ="joanamendonca@gmail.com" senha = "aopHMXX9" primeiro_nome = "Joana" ultimo_nome = "Mendonça" habilitado = "0" />
+    <TB_ADMINISTRADOR id_admin = "1" matricula = "96712385" cargo = "1" />
 </dataset>
