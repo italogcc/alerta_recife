@@ -40,6 +40,15 @@ public class Administrador extends Usuario implements Serializable {
     @Column(name="CARGO", length = 2)
     private Cargo cargo; 
 
+    public Administrador(){
+        
+    }
+    
+    public Administrador(String matricula, Cargo cargo) {
+        this.matricula = matricula;
+        this.cargo = cargo;
+    }
+
     public String getMatricula() {
         return matricula;
     }
@@ -54,14 +63,6 @@ public class Administrador extends Usuario implements Serializable {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
 }

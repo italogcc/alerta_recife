@@ -1,8 +1,11 @@
 package ifpe.recife.tads.alerta_recife;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +15,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -32,32 +36,51 @@ import javax.validation.constraints.NotNull;
 )
 @Access(AccessType.FIELD)
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario implements Serializable{
-    
+public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    Long id;
+    private Long id;
 
     @NotNull
-    @Column(name="EMAIL", unique = true, length = 100)
+    @Column(name = "EMAIL", unique = true, length = 100)
     private String email;
 
     @NotNull
-    @Column(name="SENHA", length = 15)
+    @Column(name = "SENHA", length = 15)
     private String senha;
 
     @NotNull
-    @Column(name="PRIMEIRO_NOME", length = 50)
+    @Column(name = "PRIMEIRO_NOME", length = 50)
     private String primeiroNome;
-    
-    @NotNull
-    @Column(name="ULTIMO_NOME",length = 50)
-    private String ultimoNome;
 
     @NotNull
-    @Column(name="HABILITADO")
+    @Column(name = "ULTIMO_NOME", length = 50)
+    private String ultimoNome;
+
+    @OneToMany(mappedBy = "usuario",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Telefone> telefones;
+
+    @NotNull
+    @Column(name = "HABILITADO")
     private boolean habilitado;
+
+    public Usuario() {
+        this.telefones = new ArrayList<>();
+
+    }
+
+    public Usuario(Long id, String email, String senha, String primeiroNome, String ultimoNome, boolean habilitado) {
+        this.telefones = new ArrayList<>();
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+        this.primeiroNome = primeiroNome;
+        this.ultimoNome = ultimoNome;
+        this.habilitado = habilitado;
+    }
 
     public Long getId() {
         return id;
@@ -99,6 +122,14 @@ public class Usuario implements Serializable{
         this.ultimoNome = ultimoNome;
     }
 
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
     public boolean isHabilitado() {
         return habilitado;
     }
@@ -106,5 +137,5 @@ public class Usuario implements Serializable{
     public void setHabilitado(boolean habilitado) {
         this.habilitado = habilitado;
     }
-    
+
 }

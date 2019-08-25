@@ -4,6 +4,11 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>ifpe.recife.tads.alerta_recife.Administrador</class>
     <class>ifpe.recife.tads.alerta_recife.Usuario</class>
+    <class>ifpe.recife.tads.alerta_recife.Contato</class>
+    <class>ifpe.recife.tads.alerta_recife.Coordenada</class>
+    <class>ifpe.recife.tads.alerta_recife.Endereco</class>
+    <class>ifpe.recife.tads.alerta_recife.PontoDeRisco</class>
+    <class>ifpe.recife.tads.alerta_recife.Telefone</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/alerta_recife"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
