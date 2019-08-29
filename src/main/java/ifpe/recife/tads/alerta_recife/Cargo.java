@@ -4,10 +4,10 @@ public enum Cargo {
 
     GERENTE(1), ANALISTA(2), TECNICO(3);
 
-    public int cargo;
+    public int numCargo;
 
     Cargo(int valor) {
-        this.cargo = valor;
+        this.numCargo = valor;
     }
 
 }

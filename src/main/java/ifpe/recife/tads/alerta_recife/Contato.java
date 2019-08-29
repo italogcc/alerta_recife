@@ -8,11 +8,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TB_CONTATO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Contato.RecuperarPorDescricao",
+                    query = "SELECT c FROM Contato c WHERE c.descricao LIKE :descricao"
+            )
+            ,
+            @NamedQuery(
+                    name = "Contato.RecuperarContatos",
+                    query = "SELECT c FROM Contato c ORDER BY c.descricao"
+            )
+            ,
+            @NamedQuery(
+                    name = "Contato.RecuperarPorNumero",
+                    query = "SELECT c FROM Contato c WHERE c.numero = :numero"
+            )
+        }
+)
 @Access(AccessType.FIELD)
 public class Contato implements Serializable {
 

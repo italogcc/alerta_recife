@@ -4,4 +4,7 @@
     <TB_USUARIO email ="igormoraes@gmail.com" senha = "LbyI20" primeiro_nome = "Igor" ultimo_nome = "Moraes" habilitado = "1" />
     <TB_USUARIO email ="joanamendonca@gmail.com" senha = "aopHMXX9" primeiro_nome = "Joana" ultimo_nome = "Mendonça" habilitado = "0" />
     <TB_ADMINISTRADOR id_admin = "1" matricula = "96712385" cargo = "1" />
+    <TB_CONTATO numero = "8132556679" descricao = "Defesa Civil Regional Sul"/>
+    <TB_CONTATO numero = "8123908262" descricao = "Defesa Civil Regional Plana"/>
+    <TB_CONTATO numero = "193" descricao = "Emergência Bombeiros"/>
 </dataset>

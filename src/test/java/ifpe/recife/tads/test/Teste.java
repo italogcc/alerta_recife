@@ -2,6 +2,7 @@ package ifpe.recife.tads.test;
 
 import ifpe.recife.tads.alerta_recife.Administrador;
 import ifpe.recife.tads.alerta_recife.Cargo;
+import ifpe.recife.tads.alerta_recife.Contato;
 import ifpe.recife.tads.alerta_recife.Usuario;
 import java.util.List;
 import java.util.logging.Level;
@@ -112,7 +113,8 @@ public class Teste {
         assertTrue(usuario.getEmail().equals("pedro.dantas@gmail.com"));
 
     }
-
+    
+    @Test
     public void recuperaUsuariosAtivos() {
 
         logger.info("Executando: recuperaUsuariosAtivos");
@@ -122,7 +124,8 @@ public class Teste {
         usuarios.forEach((Usuario usuario) -> {
             assertTrue(usuario.isHabilitado() == true);
         });
-        assertEquals(3, usuarios.size());
+        assertEquals(4, usuarios.size());
+        
     }
 
     @Test
@@ -151,7 +154,7 @@ public class Teste {
         admin.setUltimoNome("Gomes");
         admin.setHabilitado(true);
         admin.setMatricula("12098651");
-        admin.setCargo(Cargo.TECNICO);
+        admin.setCargo(Cargo.TECNICO.numCargo);
         em.persist(admin);
         em.flush();
         assertNotNull(admin.getId());
@@ -168,15 +171,16 @@ public class Teste {
         assertTrue(adm.getMatricula().equals("12098651"));
 
     }
-
+    
+    @Test
     public void recuperaAdministradorPorCargo() {
 
         logger.info("Executando: recuperaAdministradorPorCargo");
         TypedQuery<Administrador> query = em.createNamedQuery("Usuario.RecuperarPorCargo", Administrador.class);
-        query.setParameter("cargo", 3);
+        query.setParameter("cargo", Cargo.TECNICO.numCargo);
         List<Administrador> adms = query.getResultList();
         adms.forEach((Administrador adm) -> {
-            assertTrue(adm.getCargo() == Cargo.TECNICO);
+            assertTrue(adm.getCargo() == Cargo.TECNICO.numCargo);
         });
         assertEquals(1, adms.size());
 
@@ -193,6 +197,58 @@ public class Teste {
         em.remove(adm);
         em.flush();
         assertEquals(0, query.getResultList().size());
+
+    }
+    
+    //Teste Contato
+    @Test
+    public void criaContato() {
+
+        logger.info("Executando: criaContato");
+        Contato contato = new Contato();
+        contato.setNumero("8132558190");
+        contato.setDescricao("Defesa Civil - Regional Norte");
+        em.persist(contato);
+        em.flush();
+        assertNotNull(contato.getId());
+
+    }
+
+    @Test
+    public void recuperaContatoPorDescricao() {
+
+        logger.info("Executando: recuperaContatoPorDescricao");
+        TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarPorDescricao", Contato.class);
+        query.setParameter("descricao", "%Regional%");
+        List<Contato> contatos = query.getResultList();
+        contatos.forEach((Contato contato) ->{
+            assertTrue(contato.getDescricao().contains("Regional"));
+        });
+        assertEquals(3, contatos.size());
+
+    }
+
+    @Test
+    public void recuperaContatos() {
+
+        logger.info("Executando: recuperaContatos");
+        TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarContatos", Contato.class);
+        List<Contato> contatos = query.getResultList();
+        assertEquals(4, contatos.size());
+
+    }
+
+    @Test
+    public void removeContato() {
+
+        logger.info("Executando: removeContato");
+        TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarPorNumero", Contato.class);
+        query.setParameter("numero", "8132558190");
+        Contato contato = (Contato) query.getSingleResult();
+        assertNotNull(contato);
+        em.remove(contato);
+        em.flush();
+         assertEquals(0, query.getResultList().size());
 
     }
 

@@ -37,14 +37,14 @@ public class Administrador extends Usuario implements Serializable {
     private String matricula;
 
     @NotNull
-    @Column(name="CARGO", length = 2)
-    private Cargo cargo; 
+    @Column(name="CARGO")
+    private int cargo; 
 
     public Administrador(){
         
     }
     
-    public Administrador(String matricula, Cargo cargo) {
+    public Administrador(String matricula, int cargo) {
         this.matricula = matricula;
         this.cargo = cargo;
     }
@@ -57,12 +57,12 @@ public class Administrador extends Usuario implements Serializable {
         this.matricula = matricula;
     }
 
-    public Cargo getCargo() {
+    public int getCargo() {
         return cargo;
     }
 
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
+    public void setCargo(int numCargo) {
+        this.cargo = numCargo;
     }
 
 }
