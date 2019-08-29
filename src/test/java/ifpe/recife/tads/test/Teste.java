@@ -88,7 +88,7 @@ public class Teste {
 
     // Testes Usuário
     @Test
-    public void criaUsuario() {
+    public void t01_criaUsuario() {
 
         logger.info("Executando: criaUsuario");
         Usuario usuario = new Usuario();
@@ -104,7 +104,7 @@ public class Teste {
     }
 
     @Test
-    public void recuperaUsuarioPorEmail() {
+    public void t02_recuperaUsuarioPorEmail() {
 
         logger.info("Executando: recuperaUsuarioPorEmail");
         TypedQuery<Usuario> query = em.createNamedQuery("Usuario.RecuperarPorEmail", Usuario.class);
@@ -115,21 +115,21 @@ public class Teste {
     }
     
     @Test
-    public void recuperaUsuariosAtivos() {
+    public void t03_recuperaUsuariosAtivos() {
 
         logger.info("Executando: recuperaUsuariosAtivos");
         TypedQuery<Usuario> query = em.createNamedQuery("Usuario.RecuperarAtivos", Usuario.class);
         query.setParameter("habilitado", true);
         List<Usuario> usuarios = query.getResultList();
         usuarios.forEach((Usuario usuario) -> {
-            assertTrue(usuario.isHabilitado() == true);
+            assertTrue(usuario.isHabilitado());
         });
-        assertEquals(4, usuarios.size());
+        assertEquals(3, usuarios.size());
         
     }
 
     @Test
-    public void removeUsuario() {
+    public void t04_removeUsuario() {
 
         logger.info("Executando: removeUsuario");
         TypedQuery<Usuario> query = em.createNamedQuery("Usuario.RecuperarPorEmail", Usuario.class);
@@ -144,7 +144,7 @@ public class Teste {
 
     // Testes Administrador
     @Test
-    public void criaAdministrador() {
+    public void t05_criaAdministrador() {
 
         logger.info("Executando: criaAdministrador");
         Administrador admin = new Administrador();
@@ -162,7 +162,7 @@ public class Teste {
     }
 
     @Test
-    public void recuperaAdministradorPorMatricula() {
+    public void t06_recuperaAdministradorPorMatricula() {
 
         logger.info("Executando: recuperaAdministradorPorMatricula");
         TypedQuery<Administrador> query = em.createNamedQuery("Administrador.RecuperarPorMatricula", Administrador.class);
@@ -173,7 +173,7 @@ public class Teste {
     }
     
     @Test
-    public void recuperaAdministradorPorCargo() {
+    public void t07_recuperaAdministradorPorCargo() {
 
         logger.info("Executando: recuperaAdministradorPorCargo");
         TypedQuery<Administrador> query = em.createNamedQuery("Usuario.RecuperarPorCargo", Administrador.class);
@@ -187,7 +187,7 @@ public class Teste {
     }
 
     @Test
-    public void removeAdministrador() {
+    public void t08_removeAdministrador() {
 
         logger.info("Executando: removeAdministrador");
         TypedQuery<Administrador> query = em.createNamedQuery("Administrador.RecuperarPorMatricula", Administrador.class);
@@ -202,7 +202,7 @@ public class Teste {
     
     //Teste Contato
     @Test
-    public void criaContato() {
+    public void t09_criaContato() {
 
         logger.info("Executando: criaContato");
         Contato contato = new Contato();
@@ -215,7 +215,7 @@ public class Teste {
     }
 
     @Test
-    public void recuperaContatoPorDescricao() {
+    public void t10_recuperaContatoPorDescricao() {
 
         logger.info("Executando: recuperaContatoPorDescricao");
         TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarPorDescricao", Contato.class);
@@ -229,7 +229,7 @@ public class Teste {
     }
 
     @Test
-    public void recuperaContatos() {
+    public void t11_recuperaContatos() {
 
         logger.info("Executando: recuperaContatos");
         TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarContatos", Contato.class);
@@ -239,7 +239,7 @@ public class Teste {
     }
 
     @Test
-    public void removeContato() {
+    public void t12_removeContato() {
 
         logger.info("Executando: removeContato");
         TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarPorNumero", Contato.class);
