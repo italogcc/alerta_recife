@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Verificar o "id_coordenada"
+<TB_ENDERECO id_coordenada = "1" rua = "Rua Leônidas Cravo Gama" numero = "120" bairro = "Afogados" cidade = "Recife"/><TB_ENDERECO coordenada = "2" pontoderisco = "3" rua = "Rua Leônidas Cravo Gama" numero = "120" barro = "Afogados" cidade = "Recife"/>
+    
+<TB_PONTO_RISCO tipo_risco = "3" id_endereco = "1"/>
+-->    
+
 <dataset>
     <TB_USUARIO email ="rosaalexandrino@gmail.com" senha = "hBuxA23" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
     <TB_USUARIO email ="igormoraes@gmail.com" senha = "LbyI20" primeiro_nome = "Igor" ultimo_nome = "Moraes" habilitado = "1" />
     <TB_USUARIO email ="joanamendonca@gmail.com" senha = "aopHMXX9" primeiro_nome = "Joana" ultimo_nome = "Mendonça" habilitado = "0" />
+
     <TB_ADMINISTRADOR id_admin = "1" matricula = "96712385" cargo = "1" />
+    <TB_ADMINISTRADOR id_admin = "2" matricula = "96785321" cargo = "3" />
+    
+    
     <TB_CONTATO numero = "8132556679" descricao = "Defesa Civil Regional Sul"/>
     <TB_CONTATO numero = "8123908262" descricao = "Defesa Civil Regional Plana"/>
-    <TB_CONTATO numero = "193" descricao = "Emergência Bombeiros"/>
+    <TB_CONTATO numero = "8133556856" descricao = "Defesa Civil Regional Nordeste"/>
+    <TB_CONTATO numero = "8133556615" descricao = "Defesa Civil Regional Noroeste"/>
+    <TB_CONTATO numero = "8133556796" descricao = "Defesa Civil Regional Oeste"/>
+    
+    <TB_CONTATO numero = "192" descricao = "SAMU"/>
+    <TB_CONTATO numero = "193" descricao = "Corpo de Bombeiros"/>
+    <TB_CONTATO numero = "197" descricao = "Polícia Civil"/>
+    <TB_CONTATO numero = "199" descricao = "Defesa Civil"/>
+    
 </dataset>

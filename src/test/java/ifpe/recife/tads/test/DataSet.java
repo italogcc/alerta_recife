@@ -34,7 +34,7 @@ public class DataSet {
             IDataSet dataSet = builder.build(in);
             DatabaseOperation.CLEAN_INSERT.execute(db_connection, dataSet);
         } catch (Exception ex) {
-            System.out.printf("conexao falhou");
+            System.out.printf("A conexao falhou");
             throw new RuntimeException(ex.getMessage(), ex);
         } finally {
             try {

@@ -28,11 +28,11 @@ public class Coordenada implements Serializable {
     
     @NotNull
     @Column(name = "PONTO_X")
-    double pontoX;
+    double pontoX; // 12 caracteres
     
     @NotNull
     @Column(name = "PONTO_Y")
-    double pontoY;
+    double pontoY; // 12 caracteres
 
     public Coordenada() {
 
