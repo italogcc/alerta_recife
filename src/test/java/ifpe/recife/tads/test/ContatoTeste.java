@@ -1,5 +1,7 @@
 package ifpe.recife.tads.test;
 
+
+
 import ifpe.recife.tads.alerta_recife.Administrador;
 import ifpe.recife.tads.alerta_recife.Cargo;
 import ifpe.recife.tads.alerta_recife.Contato;

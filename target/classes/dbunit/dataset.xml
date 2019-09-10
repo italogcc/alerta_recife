@@ -14,6 +14,11 @@
     <TB_ADMINISTRADOR id_admin = "1" matricula = "96712385" cargo = "1" />
     <TB_ADMINISTRADOR id_admin = "2" matricula = "96785321" cargo = "3" />
     
+    <TB_COORDENADA ponto_X = "-8.0791787" ponto_Y = "-34.9051573"/>    
+    
+    <TB_ENDERECO id_coordenada = "1" rua = "Rua Leônidas Cravo Gama" numero = "120" bairro = "Afogados" cidade = "Recife"/>
+    
+    <TB_PONTO_RISCO tipo_risco = "3" id_endereco = "1"/>
     
     <TB_CONTATO numero = "8132556679" descricao = "Defesa Civil Regional Sul"/>
     <TB_CONTATO numero = "8123908262" descricao = "Defesa Civil Regional Plana"/>

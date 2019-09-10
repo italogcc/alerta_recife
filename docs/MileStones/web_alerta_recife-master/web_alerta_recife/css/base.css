@@ -1,0 +1,53 @@
+html{
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace; 
+    font-size: 16px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 26.4px;
+}
+.navbar-custom{
+    background-color: rgb(0,151,167);
+}
+.fa{
+    color: #ffffff !important;
+}
+.fa-globe{
+    vertical-align: middle;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text{
+    color: #ffffff;
+}
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff;
+}
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+#collapsible-navbar{
+    width: 35%;
+    margin-right: 20px;
+}
+#custom-navbar{
+    width: 60%;
+}
+#custom-navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    float: right;
+}
+#custom-navbar li{
+    float: left;
+    padding-left: 10px;
+}
+#custom-navbar .navbar-nav .dropdown-menu{
+    position: absolute !important;
+}
+#user-avatar{
+    width: 31px;
+    height: 31px;s
+}
