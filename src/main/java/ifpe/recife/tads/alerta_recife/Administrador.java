@@ -11,6 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
 
 @Entity
 @Table(name="TB_ADMINISTRADOR")
@@ -22,8 +24,23 @@ import javax.validation.constraints.NotNull;
             )
             ,
             @NamedQuery(
-                    name = "Usuario.RecuperarPorCargo",
+                    name = "Administrador.RecuperarPorCargo",
                     query = "SELECT a FROM Administrador a WHERE a.cargo = :cargo ORDER BY a.primeiroNome"
+            )
+        }
+)
+@NamedNativeQueries(
+        {
+            @NamedNativeQuery(
+                    name = "Administrador.RecuperarPorMatriculaSQL",
+                    query = "SELECT * FROM TB_ADMINISTRADOR adm JOIN TB_USUARIO usr ON adm.ID_ADMIN = usr.ID WHERE adm.MATRICULA = ?",
+                    resultClass = Administrador.class
+            )
+            ,
+            @NamedNativeQuery(
+                    name = "Administrador.RecuperarPorCargoSQL",
+                    query = "SELECT * FROM TB_ADMINISTRADOR WHERE CARGO = ? ORDER BY PRIMEIRO_NOME",
+                    resultClass = Administrador.class
             )
         }
 )

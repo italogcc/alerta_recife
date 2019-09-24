@@ -67,6 +67,10 @@ public class Usuario implements Serializable {
     @Column(name = "HABILITADO")
     private boolean habilitado;
 
+    @OneToMany(mappedBy = "usuario",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Solicitacao> solicitacao;
+
     public Usuario() {
         this.telefones = new ArrayList<>();
 
@@ -136,6 +140,14 @@ public class Usuario implements Serializable {
 
     public void setHabilitado(boolean habilitado) {
         this.habilitado = habilitado;
+    }
+
+    public List<Solicitacao> getSolicitacao() {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(List<Solicitacao> solicitacao) {
+        this.solicitacao = solicitacao;
     }
 
 }

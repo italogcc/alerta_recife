@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: ifpe.recife.tads.test.AdministradorTest
+Test set: ifpe.recife.tads.test.AdministradorCRUDTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.746 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.294 sec

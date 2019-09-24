@@ -26,14 +26,14 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SuppressWarnings("JPQLValidation")
-public class ContatoTest {
+public class ContatoJPQLTest {
 
     private static EntityManagerFactory emf;
     private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
 
-    public ContatoTest() {
+    public ContatoJPQLTest() {
     }
 
     @BeforeClass
@@ -90,19 +90,6 @@ public class ContatoTest {
     }
 
     @Test
-    public void t01_criaContato() {
-
-        logger.info("Executando: criaContato");
-        Contato contato = new Contato();
-        contato.setNumero("8133554320");
-        contato.setDescricao("Defesa Civil Regional Norte");
-        em.persist(contato);
-        em.flush();
-        assertNotNull(contato.getId());
-
-    }
-
-    @Test
     public void t02_recuperaContatoPorDescricao() {
 
         logger.info("Executando: recuperaContatoPorDescricao");
@@ -112,7 +99,7 @@ public class ContatoTest {
         contatos.forEach((Contato contato) ->{
             assertTrue(contato.getDescricao().contains("Regional"));
         });
-        assertEquals(6, contatos.size());
+        assertEquals(5, contatos.size());
 
     }
 
@@ -122,22 +109,7 @@ public class ContatoTest {
         logger.info("Executando: recuperaContatos");
         TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarContatos", Contato.class);
         List<Contato> contatos = query.getResultList();
-        assertEquals(10, contatos.size());
-
-    }
-
-    @Test
-    public void t04_atualizaDado() {
-        logger.info("Executando: atualizaDado");
-        Contato cont;
-        TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarPorDescricao", Contato.class);
-        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
-        query.setParameter("descricao", "Defesa Civil Regional Oeste");
-        cont = (Contato) query.getSingleResult();
-        cont.setNumero("8133556977");
-        em.flush();
-        cont = (Contato) query.getSingleResult();
-        assertEquals("8133556977", cont.getNumero());
+        assertEquals(9, contatos.size());
 
     }
 
@@ -146,7 +118,7 @@ public class ContatoTest {
 
         logger.info("Executando: removeContato");
         TypedQuery<Contato> query = em.createNamedQuery("Contato.RecuperarPorNumero", Contato.class);
-        query.setParameter("numero", "8133554320");
+        query.setParameter("numero", "8133556856");
         Contato contato = (Contato) query.getSingleResult();
         assertNotNull(contato);
         em.remove(contato);

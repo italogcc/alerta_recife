@@ -6,19 +6,35 @@
 <TB_PONTO_RISCO tipo_risco = "3" id_endereco = "1"/>
 -->    
 
+<!--<TB_ABRIGO Igreja de Cajueiro, na Zona Norte da capital
+<TB_ABRIGO Colégio Paulo VI, na Linha do Tiro, na mesma região-->
+
+
 <dataset>
     <TB_USUARIO email ="rosaalexandrino@gmail.com" senha = "hBuxA23" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
     <TB_USUARIO email ="igormoraes@gmail.com" senha = "LbyI20" primeiro_nome = "Igor" ultimo_nome = "Moraes" habilitado = "1" />
     <TB_USUARIO email ="joanamendonca@gmail.com" senha = "aopHMXX9" primeiro_nome = "Joana" ultimo_nome = "Mendonça" habilitado = "0" />
+    <TB_USUARIO email ="mariojorge@outlook.com" senha = "2pKbVjpe" primeiro_nome = "Mario" ultimo_nome = "Jorge" habilitado = "1" />
+    <TB_USUARIO email ="maiconrodrigues@bol.com.br" senha = "MYJZf8gQ" primeiro_nome = "Maicon" ultimo_nome = "Rodrigues" habilitado = "1" />
+    <TB_USUARIO email ="joicesantos@hotmail.com" senha = "oB6LE1eF" primeiro_nome = "Joice" ultimo_nome = "Santos" habilitado = "1" />
+    <TB_USUARIO email ="mariaaparecida@live.com" senha = "oPpP2rZN" primeiro_nome = "Maria" ultimo_nome = "Aparecida" habilitado = "0" />
+    <TB_USUARIO email ="fernandotads@uol.com.br" senha = "j8NsFXNS" primeiro_nome = "Fernando" ultimo_nome = "Bezerra" habilitado = "1" />
+    <TB_USUARIO email ="alanaarruda@yahoo.com.br" senha = "u5mrl9KL" primeiro_nome = "Alana" ultimo_nome = "Arruda" habilitado = "1" />
+    <TB_USUARIO email ="marcoslima@yahoo.com" senha = "hdm1IwmZ" primeiro_nome = "Marcos" ultimo_nome = "Lima" habilitado = "1" />
 
     <TB_ADMINISTRADOR id_admin = "1" matricula = "96712385" cargo = "1" />
     <TB_ADMINISTRADOR id_admin = "2" matricula = "96785321" cargo = "3" />
+    <TB_ADMINISTRADOR id_admin = "5" matricula = "96532441" cargo = "3" />
+    <TB_ADMINISTRADOR id_admin = "6" matricula = "96225321" cargo = "2" />
     
+    <TB_COORDENADA ponto_X = "-8.0791787" ponto_Y = "-34.9051573"/>
     <TB_COORDENADA ponto_X = "-8.0791787" ponto_Y = "-34.9051573"/>    
     
     <TB_ENDERECO id_coordenada = "1" rua = "Rua Leônidas Cravo Gama" numero = "120" bairro = "Afogados" cidade = "Recife"/>
+    <TB_ENDERECO id_coordenada = "2" rua = "Rua Leônidas Cravo Gama" numero = "120" bairro = "Afogados" cidade = "Recife"/>
     
     <TB_PONTO_RISCO tipo_risco = "3" id_endereco = "1"/>
+    <TB_PONTO_RISCO tipo_risco = "1" id_endereco = "2"/>
     
     <TB_CONTATO numero = "8132556679" descricao = "Defesa Civil Regional Sul"/>
     <TB_CONTATO numero = "8123908262" descricao = "Defesa Civil Regional Plana"/>

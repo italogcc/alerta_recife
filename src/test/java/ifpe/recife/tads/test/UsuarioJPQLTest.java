@@ -26,14 +26,14 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SuppressWarnings("JPQLValidation")
-public class UsuarioTest {
+public class UsuarioJPQLTest {
 
     private static EntityManagerFactory emf;
     private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
 
-    public UsuarioTest() {
+    public UsuarioJPQLTest() {
     }
 
     @BeforeClass
@@ -90,29 +90,13 @@ public class UsuarioTest {
     }
 
     @Test
-    public void t01_criaUsuario() {
-
-        logger.info("Executando: criaUsuario");
-        Usuario usuario = new Usuario();
-        usuario.setEmail("pedro.dantas@gmail.com");
-        usuario.setPrimeiroNome("Pedro");
-        usuario.setUltimoNome("Dantas");
-        usuario.setSenha("queue");
-        usuario.setHabilitado(true);
-        em.persist(usuario);
-        em.flush();
-        assertNotNull(usuario.getId());
-
-    }
-
-    @Test
     public void t02_recuperaUsuarioPorEmail() {
 
         logger.info("Executando: recuperaUsuarioPorEmail");
         TypedQuery<Usuario> query = em.createNamedQuery("Usuario.RecuperarPorEmail", Usuario.class);
-        query.setParameter("email", "pedro.dantas@gmail.com");
+        query.setParameter("email", "marcoslima@yahoo.com");
         Usuario usuario = (Usuario) query.getSingleResult();
-        assertTrue(usuario.getEmail().equals("pedro.dantas@gmail.com"));
+        assertTrue(usuario.getEmail().equals("marcoslima@yahoo.com"));
 
     }
     
@@ -126,31 +110,16 @@ public class UsuarioTest {
         usuarios.forEach((Usuario usuario) -> {
             assertTrue(usuario.isHabilitado());
         });
-        assertEquals(3, usuarios.size());
+        assertEquals(8, usuarios.size());
         
     }
-
-    @Test
-    public void t04_atualizaDado() {
-        logger.info("Executando: atualizaDado");
-        Usuario usuario;
-        TypedQuery<Usuario> query = em.createNamedQuery("Usuario.RecuperarPorEmail", Usuario.class);
-        query.setHint("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS);
-        query.setParameter("email", "joanamendonca@gmail.com");
-        usuario = (Usuario) query.getSingleResult();
-        usuario.setUltimoNome("Souza"); // A usuária optou por usar o sobrenome de casamento
-        em.flush();
-        usuario = (Usuario) query.getSingleResult();
-        assertEquals("Souza", usuario.getUltimoNome());
-        // assertEquals("Souza", usuario.getUltimoNome() + "Joana", usuario.getPrimeiroNome());
-    }
-    
+   
     @Test
     public void t05_removeUsuario() {
 
         logger.info("Executando: removeUsuario");
         TypedQuery<Usuario> query = em.createNamedQuery("Usuario.RecuperarPorEmail", Usuario.class);
-        query.setParameter("email", "pedro.dantas@gmail.com");
+        query.setParameter("email", "marcoslima@yahoo.com");
         Usuario usuario = (Usuario) query.getSingleResult();
         assertNotNull(usuario);
         em.remove(usuario);

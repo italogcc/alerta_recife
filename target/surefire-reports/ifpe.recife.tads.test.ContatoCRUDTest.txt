@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: ifpe.recife.tads.test.ContatoTest
+Test set: ifpe.recife.tads.test.ContatoCRUDTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.017 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.152 sec
