@@ -2,7 +2,6 @@ package ifpe.recife.tads.test;
 
 import ifpe.recife.tads.alerta_recife.Administrador;
 import ifpe.recife.tads.alerta_recife.Cargo;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.CacheRetrieveMode;
@@ -12,28 +11,21 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import static org.junit.Assert.*;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-@SuppressWarnings("JPQLValidation")
-public class AdministradorCRUDTest {
+public class CoordenadaCRUDTest {
 
     private static EntityManagerFactory emf;
     private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
 
-    public AdministradorCRUDTest() {
+    public CoordenadaCRUDTest() {
     }
 
     @BeforeClass
@@ -108,34 +100,7 @@ public class AdministradorCRUDTest {
     }
 
     @Test
-    public void t02_criaAdministradorMatriculaInvalida() {
-
-        logger.info("Executando: criaAdministradorMatriculaInvalida");
-        Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-
-        Administrador admin = new Administrador();
-        admin.setEmail("paulo.gomes@gmail.com");
-        admin.setSenha("iUyBm12");
-        admin.setPrimeiroNome("Paulo");
-        admin.setUltimoNome("Gomes");
-        admin.setHabilitado(true);
-        admin.setMatricula("12@A865BBB1"); //Matrícula inválida
-        admin.setCargo(Cargo.TECNICO.numCargo);
-
-        Set<ConstraintViolation<Administrador>> constraintViolations = validator.validate(admin);
-
-        if (logger.isLoggable(Level.INFO)) {
-            for (ConstraintViolation violation : constraintViolations) {
-                Logger.getGlobal().log(Level.INFO, "{0}.{1}: {2}", new Object[]{violation.getRootBeanClass(), violation.getPropertyPath(), violation.getMessage()});
-            }
-        }
-
-        assertEquals(2, constraintViolations.size());
-
-    }
-
-    @Test
-    public void t03_atualizaCargo() {
+    public void t02_atualizaCargo() {
 
         logger.info("Executando: atualizaCargo");
         Administrador adm;
@@ -151,7 +116,7 @@ public class AdministradorCRUDTest {
     }
 
     @Test
-    public void t04_atualizaCargoMerge() {
+    public void t03_atualizaCargoMerge() {
 
         logger.info("Executando: atualizaCargoMerge");
         Administrador adm;
@@ -170,7 +135,7 @@ public class AdministradorCRUDTest {
     }
 
     @Test
-    public void t05_removeAdministrador() {
+    public void t04_removeAdministrador() {
 
         logger.info("Executando: removeAdministrador");
         TypedQuery<Administrador> query = em.createNamedQuery("Administrador.RecuperarPorMatricula", Administrador.class);

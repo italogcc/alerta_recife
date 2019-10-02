@@ -1,6 +1,7 @@
 package ifpe.recife.tads.alerta_recife;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -30,7 +32,7 @@ public class Endereco implements Serializable {
     private Coordenada coordenada;
 
     @NotNull
-    @OneToOne(mappedBy = "endereco")
+    @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
     private PontoDeRisco pontoDeRisco;
 
     @NotNull
@@ -49,11 +51,15 @@ public class Endereco implements Serializable {
     @Column(name = "CIDADE", length = 100)
     private String cidade;
 
+    @OneToMany(mappedBy = "endereco",
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Solicitacao> solicitacao;
+
     public Endereco() {
 
     }
 
-    public Endereco(Long id, Coordenada coordenada, PontoDeRisco pontoDeRisco, String rua, String numero, String bairro, String cidade) {
+    public Endereco(Long id, Coordenada coordenada, PontoDeRisco pontoDeRisco, String rua, String numero, String bairro, String cidade, List<Solicitacao> solicitacao) {
         this.id = id;
         this.coordenada = coordenada;
         this.pontoDeRisco = pontoDeRisco;
@@ -61,14 +67,16 @@ public class Endereco implements Serializable {
         this.numero = numero;
         this.bairro = bairro;
         this.cidade = cidade;
+        this.solicitacao = solicitacao;
     }
-    
+
     public PontoDeRisco getPontoDeRisco() {
         return pontoDeRisco;
     }
 
     public void setPontoDeRisco(PontoDeRisco pontoDeRisco) {
         this.pontoDeRisco = pontoDeRisco;
+        this.pontoDeRisco.setEndereco(this);
     }
 
     public Long getId() {
@@ -85,6 +93,7 @@ public class Endereco implements Serializable {
 
     public void setCoordenada(Coordenada coordenada) {
         this.coordenada = coordenada;
+        this.coordenada.setEndereco(this);
     }
 
     public String getRua() {
@@ -117,6 +126,14 @@ public class Endereco implements Serializable {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public List<Solicitacao> getSolicitacao() {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(List<Solicitacao> solicitacao) {
+        this.solicitacao = solicitacao;
     }
 
 }

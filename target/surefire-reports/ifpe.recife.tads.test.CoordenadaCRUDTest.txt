@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
-Test set: ifpe.recife.tads.test.ContatoCRUDTest
+Test set: ifpe.recife.tads.test.CoordenadaCRUDTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 2.919 sec <<< FAILURE!
-ifpe.recife.tads.test.ContatoCRUDTest  Time elapsed: 5.315 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 2.171 sec <<< FAILURE!
+ifpe.recife.tads.test.CoordenadaCRUDTest  Time elapsed: 9.761 sec  <<< ERROR!
 javax.persistence.PersistenceException: Unable to execute JPA schema generation create command [create table TB_ENDERECO (ID bigint not null auto_increment, BAIRRO varchar(100) not null, CIDADE varchar(100) not null, NUMERO varchar(10) not null, RUA varchar(100) not null, ID_COORDENADA bigint not null, primary key (ID))]
 	at org.hibernate.jpa.internal.schemagen.GenerationTargetToDatabase.acceptCreateCommands(GenerationTargetToDatabase.java:64)
 	at org.hibernate.jpa.internal.schemagen.JpaSchemaGenerator.doGeneration(JpaSchemaGenerator.java:507)
@@ -17,7 +17,7 @@ javax.persistence.PersistenceException: Unable to execute JPA schema generation 
 	at org.hibernate.ejb.HibernatePersistence.createEntityManagerFactory(HibernatePersistence.java:54)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:39)
-	at ifpe.recife.tads.test.ContatoCRUDTest.setUpClass(ContatoCRUDTest.java:45)
+	at ifpe.recife.tads.test.CoordenadaCRUDTest.setUpClass(CoordenadaCRUDTest.java:37)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -57,9 +57,9 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'tb_
 	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:737)
 	at org.hibernate.jpa.internal.schemagen.GenerationTargetToDatabase.acceptCreateCommands(GenerationTargetToDatabase.java:61)
 	... 35 more
-ifpe.recife.tads.test.ContatoCRUDTest  Time elapsed: 5.315 sec  <<< ERROR!
+ifpe.recife.tads.test.CoordenadaCRUDTest  Time elapsed: 9.761 sec  <<< ERROR!
 java.lang.NullPointerException
-	at ifpe.recife.tads.test.ContatoCRUDTest.tearDownClass(ContatoCRUDTest.java:53)
+	at ifpe.recife.tads.test.CoordenadaCRUDTest.tearDownClass(CoordenadaCRUDTest.java:45)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

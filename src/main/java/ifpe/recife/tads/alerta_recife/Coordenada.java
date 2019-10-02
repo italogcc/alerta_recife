@@ -3,11 +3,13 @@ package ifpe.recife.tads.alerta_recife;
 import java.io.Serializable;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -21,15 +23,15 @@ public class Coordenada implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
-    
+
     @NotNull
     @OneToOne(mappedBy = "coordenada")
     private Endereco endereco;
-    
+
     @NotNull
     @Column(name = "PONTO_X")
     double pontoX; // 12 caracteres
-    
+
     @NotNull
     @Column(name = "PONTO_Y")
     double pontoY; // 12 caracteres
@@ -60,7 +62,7 @@ public class Coordenada implements Serializable {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public double getPontoX() {
         return pontoX;
     }

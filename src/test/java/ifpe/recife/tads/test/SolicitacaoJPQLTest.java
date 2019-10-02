@@ -21,14 +21,14 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SuppressWarnings("JPQLValidation")
-public class AdministradorJPQLTest {
+public class SolicitacaoJPQLTest {
 
     private static EntityManagerFactory emf;
     private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
 
-    public AdministradorJPQLTest() {
+    public SolicitacaoJPQLTest() {
     }
 
     @BeforeClass
@@ -85,27 +85,13 @@ public class AdministradorJPQLTest {
     }
 
     @Test
-    public void t01_recuperaAdministradorPorMatricula() {
-
-        logger.info("Executando: recuperaAdministradorPorMatricula");
-        TypedQuery<Administrador> query = em.createNamedQuery("Administrador.RecuperarPorMatricula", Administrador.class);
-        query.setParameter("matricula", "96532441");
-        Administrador adm = (Administrador) query.getSingleResult();
-        assertTrue(adm.getMatricula().equals("96532441"));
+    public void t01_recuperaSolicitacaoPorDescricao() {
 
     }
 
     @Test
-    public void t02_recuperaAdministradorPorCargo() {
+    public void t02_recuperaSolicitacaoPorTipo() {
 
-        logger.info("Executando: recuperaAdministradorPorCargo");
-        TypedQuery<Administrador> query = em.createNamedQuery("Administrador.RecuperarPorCargo", Administrador.class);
-        query.setParameter("cargo", Cargo.TECNICO.numCargo);
-        List<Administrador> adms = query.getResultList();
-        adms.forEach((Administrador adm) -> {
-            assertTrue(adm.getCargo() == Cargo.TECNICO.numCargo);
-        });
-        assertEquals(4, adms.size());
 
     }
 

@@ -9,6 +9,7 @@
     <class>ifpe.recife.tads.alerta_recife.Endereco</class>
     <class>ifpe.recife.tads.alerta_recife.PontoDeRisco</class>
     <class>ifpe.recife.tads.alerta_recife.Telefone</class>
+    <class>ifpe.recife.tads.alerta_recife.Solicitacao</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/alerta_recife"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

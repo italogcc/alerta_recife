@@ -13,6 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -59,8 +62,12 @@ public class Usuario implements Serializable {
     @Column(name = "ULTIMO_NOME", length = 50)
     private String ultimoNome;
 
-    @OneToMany(mappedBy = "usuario",
-            cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany
+    @JoinTable(name = "TB_USUARIO_TELEFONE", joinColumns
+            = {
+                @JoinColumn(name = "ID_USUARIO")}, inverseJoinColumns
+            = {
+                @JoinColumn(name = "ID_TELEFONE")})
     private List<Telefone> telefones;
 
     @NotNull

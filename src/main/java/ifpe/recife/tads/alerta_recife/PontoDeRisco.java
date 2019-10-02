@@ -31,13 +31,13 @@ public class PontoDeRisco implements Serializable{
     
     @NotNull
     @Column(name = "TIPO_RISCO")
-    private TipoDeRisco tipoDeRisco;
+    private int tipoDeRisco;
 
     public PontoDeRisco() {
         
     }
 
-    public PontoDeRisco(Long id, Endereco endereco, TipoDeRisco tipoDeRisco) {
+    public PontoDeRisco(Long id, Endereco endereco, int tipoDeRisco) {
         this.id = id;
         this.endereco = endereco;
         this.tipoDeRisco = tipoDeRisco;
@@ -59,11 +59,11 @@ public class PontoDeRisco implements Serializable{
         this.endereco = endereco;
     }
 
-    public TipoDeRisco getTipoDeRisco() {
+    public int getTipoDeRisco() {
         return tipoDeRisco;
     }
 
-    public void setTipoDeRisco(TipoDeRisco tipoDeRisco) {
+    public void setTipoDeRisco(int tipoDeRisco) {
         this.tipoDeRisco = tipoDeRisco;
     }
     

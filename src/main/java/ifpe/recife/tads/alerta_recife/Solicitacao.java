@@ -1,7 +1,7 @@
 package ifpe.recife.tads.alerta_recife;
 
 import java.io.Serializable;
-
+import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -11,12 +11,54 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.annotations.NamedNativeQueries;
+import org.hibernate.annotations.NamedNativeQuery;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "TB_SOLICITACAO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Solicitacao.RecuperarPorDescricao",
+                    query = "SELECT s FROM Solicitacao s WHERE s.descricao LIKE :descricao ORDER BY s.descricao"
+            )
+            ,
+            @NamedQuery(
+                    name = "Solicitacao.RecuperarPorTipo",
+                    query = "SELECT s FROM Solicitacao s WHERE s.tipoDeSolicitacao = :tipo ORDER BY s.descricao"
+            )
+            ,
+            @NamedQuery(
+                    name = "Solicitacao.RecuperarNaoAtendidos",
+                    query = "SELECT s FROM Solicitacao s WHERE s.dataConclusao IS NULL"
+            )
+        }
+)
+@NamedNativeQueries(
+        {
+            @NamedNativeQuery(
+                    name = "Solicitacao.RecuperarPorDescricaoSQL",
+                    query = "SELECT * FROM TB_SOLICITACAO WHERE DESCRICAO = ? ORDER BY DESCRICAO",
+                    resultClass = Solicitacao.class
+            )
+            ,
+            @NamedNativeQuery(
+                    name = "Solicitacao.RecuperarPorTipoSQL",
+                    query = "SELECT * FROM TB_SOLICITACAO WHERE TIPO_SOLICITACAO = ? ORDER BY DESCRICAO",
+                    resultClass = Solicitacao.class
+            )
+        }
+)
 @Access(AccessType.FIELD)
 public class Solicitacao implements Serializable {
 
@@ -25,22 +67,51 @@ public class Solicitacao implements Serializable {
     @Column(name = "ID")
     private Long id;
 
-    @NotNull
+    @NotBlank
+    @NotNull(message = "{ifpe.recife.tads.alerta_recife.Solicitacao.descricao_required}")
+    @Size(min = 1, max = 220,
+            message = "{ifpe.recife.tads.alerta_recife.Solicitacao.descricao_tamanho}")
+    @Pattern(regexp = "^[A-Za-z0-9]+$",
+            message = "{ifpe.recife.tads.alerta_recife.Solicitacao.descricao_caracter}")
     @Column(name = "DESCRICAO", length = 220)
     private String descricao;
 
-    @NotNull
+    @NotNull(message = "{ifpe.recife.tads.alerta_recife.Solicitacao.tipo_required}")
     @Column(name = "TIPO_SOLICITACAO")
     private TipoDeSolicitacao tipoDeSolicitacao;
 
     @NotNull
-    @OneToOne(mappedBy = "endereco")
-    private PontoDeRisco pontoDeRisco;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "ID")
+    private Endereco endereco;
 
     @NotNull
     @ManyToOne(optional = false)
     @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
     private Usuario usuario;
+
+    @NotNull
+    @Temporal(value = TemporalType.DATE)
+    @Past
+    @Column(name = "DATA_SOLICITACAO")
+    private Date dataSolicitacao;
+
+    @Temporal(value = TemporalType.DATE)
+    @Column(name = "DATA_CONCLUSAO")
+    private Date dataConclusao;
+
+    public Solicitacao() {
+    }
+
+    public Solicitacao(Long id, String descricao, TipoDeSolicitacao tipoDeSolicitacao, Endereco endereco, Usuario usuario, Date dataSolicitacao, Date dataConclusao) {
+        this.id = id;
+        this.descricao = descricao;
+        this.tipoDeSolicitacao = tipoDeSolicitacao;
+        this.endereco = endereco;
+        this.usuario = usuario;
+        this.dataSolicitacao = dataSolicitacao;
+        this.dataConclusao = dataConclusao;
+    }
 
     public Long getId() {
         return id;
@@ -66,12 +137,12 @@ public class Solicitacao implements Serializable {
         this.tipoDeSolicitacao = tipoDeSolicitacao;
     }
 
-    public PontoDeRisco getPontoDeRisco() {
-        return pontoDeRisco;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setPontoDeRisco(PontoDeRisco pontoDeRisco) {
-        this.pontoDeRisco = pontoDeRisco;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public Usuario getUsuario() {
@@ -80,6 +151,22 @@ public class Solicitacao implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Date getDataSolicitacao() {
+        return dataSolicitacao;
+    }
+
+    public void setDataSolicitacao(Date dataSolicitacao) {
+        this.dataSolicitacao = dataSolicitacao;
+    }
+
+    public Date getDataConclusao() {
+        return dataConclusao;
+    }
+
+    public void setDataConclusao(Date dataConclusao) {
+        this.dataConclusao = dataConclusao;
     }
 
 }

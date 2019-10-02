@@ -2,14 +2,19 @@ package ifpe.recife.tads.test;
 
 import ifpe.recife.tads.alerta_recife.Administrador;
 import ifpe.recife.tads.alerta_recife.Cargo;
-import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.CacheRetrieveMode;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,14 +26,14 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SuppressWarnings("JPQLValidation")
-public class AdministradorJPQLTest {
+public class SolicitacaoCRUDTest {
 
     private static EntityManagerFactory emf;
     private static Logger logger;
     private EntityManager em;
     private EntityTransaction et;
 
-    public AdministradorJPQLTest() {
+    public SolicitacaoCRUDTest() {
     }
 
     @BeforeClass
@@ -85,27 +90,30 @@ public class AdministradorJPQLTest {
     }
 
     @Test
-    public void t01_recuperaAdministradorPorMatricula() {
-
-        logger.info("Executando: recuperaAdministradorPorMatricula");
-        TypedQuery<Administrador> query = em.createNamedQuery("Administrador.RecuperarPorMatricula", Administrador.class);
-        query.setParameter("matricula", "96532441");
-        Administrador adm = (Administrador) query.getSingleResult();
-        assertTrue(adm.getMatricula().equals("96532441"));
+    public void t01_criaSolicitacao() {
 
     }
 
     @Test
-    public void t02_recuperaAdministradorPorCargo() {
+    public void t02_criaSolicitacaoInvalida() {
 
-        logger.info("Executando: recuperaAdministradorPorCargo");
-        TypedQuery<Administrador> query = em.createNamedQuery("Administrador.RecuperarPorCargo", Administrador.class);
-        query.setParameter("cargo", Cargo.TECNICO.numCargo);
-        List<Administrador> adms = query.getResultList();
-        adms.forEach((Administrador adm) -> {
-            assertTrue(adm.getCargo() == Cargo.TECNICO.numCargo);
-        });
-        assertEquals(4, adms.size());
+    }
+
+    @Test
+    public void t03_atualizaSolicitacao() {
+
+
+    }
+
+    @Test
+    public void t04_atualizaSolicitacaoMerge() {
+
+
+    }
+
+    @Test
+    public void t05_removeSolicitacao() {
+
 
     }
 

@@ -11,6 +11,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import org.hibernate.annotations.NamedNativeQueries;
 import org.hibernate.annotations.NamedNativeQuery;
 
@@ -49,11 +51,15 @@ import org.hibernate.annotations.NamedNativeQuery;
 @PrimaryKeyJoinColumn(name = "ID_ADMIN", referencedColumnName = "ID")
 public class Administrador extends Usuario implements Serializable {
 	
-    @NotNull
-    @Column(name="MATRICULA", unique=true, length = 15)
+    @NotNull(message = "{ifpe.recife.tads.alerta_recife.Administrador.matricula_required}")
+    @Size(min = 8, max = 10, 
+            message = "{ifpe.recife.tads.alerta_recife.Administrador.matricula_tamanho}")
+    @Pattern(regexp = "^[0-9]+$",
+            message = "{ifpe.recife.tads.alerta_recife.Administrador.matricula_caracter}")
+    @Column(name="MATRICULA", unique=true, length = 10)
     private String matricula;
 
-    @NotNull
+    @NotNull(message = "{ifpe.recife.tads.alerta_recife.Administrador.cargo_required}")
     @Column(name="CARGO")
     private int cargo; 
 
