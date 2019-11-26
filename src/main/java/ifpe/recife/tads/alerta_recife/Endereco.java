@@ -1,6 +1,7 @@
 package ifpe.recife.tads.alerta_recife;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,8 +21,41 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TB_ENDERECO")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Endereco.RecuperarEnderecos",
+                    query = "SELECT e FROM Endereco e ORDER BY e.id"
+            )
+            ,
+            @NamedQuery(
+                    name = "Endereco.RecuperarPorRua",
+                    query = "SELECT e FROM Endereco e WHERE e.rua = ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = "Endereco.RecuperarPorNumero",
+                    query = "SELECT e FROM Endereco e WHERE e.numero = :numero"
+            )
+            ,
+            @NamedQuery(
+                    name = "Endereco.RecuperarPorBairro",
+                    query = "SELECT e FROM Endereco e WHERE e.bairro = ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = "Endereco.RecuperarPorBairroAprox",
+                    query = "SELECT e FROM Endereco e WHERE e.bairro LIKE :bairro ORDER BY e.bairro"
+            )
+            ,
+            @NamedQuery(
+                    name = "Endereco.RecuperarPorRuaOrdenando",
+                    query = "SELECT e FROM Endereco e WHERE e.rua = :rua ORDER BY e.rua ASC"
+            )
+        }
+)
 @Access(AccessType.FIELD)
-public class Endereco implements Serializable {
+public class Endereco extends Entidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,24 +86,28 @@ public class Endereco implements Serializable {
     @NotNull
     @Column(name = "CIDADE", length = 100)
     private String cidade;
+    
+    @Column(name = "CEP", length = 10)
+    private String CEP;
 
     @OneToMany(mappedBy = "endereco",
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Solicitacao> solicitacao;
 
     public Endereco() {
-
+        this.solicitacao = new ArrayList<>();
+        this.pontoDeRisco = new PontoDeRisco();
     }
 
-    public Endereco(Long id, Coordenada coordenada, PontoDeRisco pontoDeRisco, String rua, String numero, String bairro, String cidade, List<Solicitacao> solicitacao) {
+    public Endereco(Long id, Coordenada coordenada, PontoDeRisco pontoDeRisco, String rua, String numero, String bairro, String cidade, String CEP, List<Solicitacao> solicitacao) {
         this.id = id;
         this.coordenada = coordenada;
-        this.pontoDeRisco = pontoDeRisco;
+        this.pontoDeRisco = new PontoDeRisco();
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.solicitacao = solicitacao;
+        this.solicitacao = new ArrayList<>();
     }
 
     public PontoDeRisco getPontoDeRisco() {
@@ -96,6 +136,14 @@ public class Endereco implements Serializable {
         this.coordenada.setEndereco(this);
     }
 
+    public String getCEP() {
+        return CEP;
+    }
+    
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+    
     public String getRua() {
         return rua;
     }
@@ -128,6 +176,11 @@ public class Endereco implements Serializable {
         this.cidade = cidade;
     }
 
+    public boolean addSolicitacao(Solicitacao sol) {
+        sol.setEndereco(this);
+        return solicitacao.add(sol);
+    }
+    
     public List<Solicitacao> getSolicitacao() {
         return solicitacao;
     }

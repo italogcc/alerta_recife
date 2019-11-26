@@ -10,12 +10,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TB_PONTO_RISCO")
+@NamedQueries(
+        {            
+            @NamedQuery(
+                    name = "PontoDeRisco.RecuperarPorTipoDeRisco",
+                    query = "SELECT p FROM PontoDeRisco p WHERE p.tipoDeRisco = ?1"
+            ),
+            @NamedQuery(
+                    name = "PontoDeRisco.RecuperarPontosDeRisco",
+                    query = "SELECT p FROM PontoDeRisco p ORDER BY p.id"
+            )    
+             ,
+            @NamedQuery(
+                    name = "PontoDeRisco.RecuperarPorEnderecoRua",
+                    query = "SELECT p FROM PontoDeRisco p WHERE p.endereco IN (SELECT e FROM Endereco e WHERE e.rua = ?1)"
+            )
+        }
+)
 @Access(AccessType.FIELD)
 public class PontoDeRisco implements Serializable{
     

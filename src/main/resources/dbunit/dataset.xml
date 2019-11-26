@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <dataset>
-    <TB_USUARIO email ="rosaalexandrino@gmail.com" senha = "hBuxA23" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
-    <TB_USUARIO email ="igormoraes@gmail.com" senha = "LbyI20" primeiro_nome = "Igor" ultimo_nome = "Moraes" habilitado = "1" />
-    <TB_USUARIO email ="joanamendonca@gmail.com" senha = "aopHMXX9" primeiro_nome = "Joana" ultimo_nome = "Mendonça" habilitado = "0" />
-    <TB_USUARIO email ="mariojorge@outlook.com" senha = "2pKbVjpe" primeiro_nome = "Mario" ultimo_nome = "Jorge" habilitado = "1" />
-    <TB_USUARIO email ="maiconrodrigues@bol.com.br" senha = "MYJZf8gQ" primeiro_nome = "Maicon" ultimo_nome = "Rodrigues" habilitado = "1" />
-    <TB_USUARIO email ="joicesantos@hotmail.com" senha = "oB6LE1eF" primeiro_nome = "Joice" ultimo_nome = "Santos" habilitado = "1" />
-    <TB_USUARIO email ="mariaaparecida@live.com" senha = "oPpP2rZN" primeiro_nome = "Maria" ultimo_nome = "Aparecida" habilitado = "0" />
-    <TB_USUARIO email ="fernandotads@uol.com.br" senha = "j8NsFXNS" primeiro_nome = "Fernando" ultimo_nome = "Bezerra" habilitado = "1" />
-    <TB_USUARIO email ="alanaarruda@yahoo.com.br" senha = "u5mrl9KL" primeiro_nome = "Alana" ultimo_nome = "Arruda" habilitado = "1" />
-    <TB_USUARIO email ="marcoslima@yahoo.com" senha = "hdm1IwmZ" primeiro_nome = "Marcos" ultimo_nome = "Lima" habilitado = "1" />
-    <TB_USUARIO email ="igorribas@live.com" senha = "gHaiID" primeiro_nome = "Igor" ultimo_nome = "Ribas" habilitado = "0" />
-    <TB_USUARIO email ="cassiabatista@uol.com.br" senha = "PmLLNS" primeiro_nome = "Cássia" ultimo_nome = "Batista" habilitado = "1" />
-    <TB_USUARIO email ="gustavogarcia@yahoo.com.br" senha = "NamSDN" primeiro_nome = "Gustavo" ultimo_nome = "Garcia" habilitado = "1" />
-    <TB_USUARIO email ="brunomachado@yahoo.com" senha = "Uiab90" primeiro_nome = "Bruno" ultimo_nome = "Machado" habilitado = "1" />
-    <TB_USUARIO email ="marcosmedeiros@yahoo.com.br" senha = "A976snsj" primeiro_nome = "Marcos" ultimo_nome = "Medeiros" habilitado = "1" />
-    <TB_USUARIO email ="nayarapinheiro@yahoo.com" senha = "654JhG" primeiro_nome = "Nayara" ultimo_nome = "Pinheiro" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="rosaalexandrino@gmail.com" senha = "hBuxA23" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="igormoraes@gmail.com" senha = "LbyI20" primeiro_nome = "Igor" ultimo_nome = "Moraes" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="joanamendonca@gmail.com" senha = "aopHMXX9" primeiro_nome = "Joana" ultimo_nome = "Mendonça" habilitado = "0" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="mariojorge@outlook.com" senha = "2pKbVjpe" primeiro_nome = "Mario" ultimo_nome = "Jorge" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="maiconrodrigues@bol.com.br" senha = "MYJZf8gQ" primeiro_nome = "Maicon" ultimo_nome = "Rodrigues" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="joicesantos@hotmail.com" senha = "oB6LE1eF" primeiro_nome = "Joice" ultimo_nome = "Santos" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="mariaaparecida@live.com" senha = "oPpP2rZN" primeiro_nome = "Maria" ultimo_nome = "Aparecida" habilitado = "0" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="fernandotads@uol.com.br" senha = "j8NsFXNS" primeiro_nome = "Fernando" ultimo_nome = "Bezerra" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="alanaarruda@yahoo.com.br" senha = "u5mrl9KL" primeiro_nome = "Alana" ultimo_nome = "Arruda" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="marcoslima@yahoo.com" senha = "hdm1IwmZ" primeiro_nome = "Marcos" ultimo_nome = "Lima" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="igorribas@live.com" senha = "gHaiID" primeiro_nome = "Igor" ultimo_nome = "Ribas" habilitado = "0" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="cassiabatista@uol.com.br" senha = "PmLLNS" primeiro_nome = "Cássia" ultimo_nome = "Batista" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="gustavogarcia@yahoo.com.br" senha = "NamSDN" primeiro_nome = "Gustavo" ultimo_nome = "Garcia" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="brunomachado@yahoo.com" senha = "Uiab90" primeiro_nome = "Bruno" ultimo_nome = "Machado" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="marcosmedeiros@yahoo.com.br" senha = "A976snsj" primeiro_nome = "Marcos" ultimo_nome = "Medeiros" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="nayarapinheiro@yahoo.com" senha = "654JhG" primeiro_nome = "Nayara" ultimo_nome = "Pinheiro" habilitado = "1" />
     
     <TB_ADMINISTRADOR id_admin = "1" matricula = "96712385" cargo = "1" />
     <TB_ADMINISTRADOR id_admin = "2" matricula = "96785321" cargo = "3" />
@@ -27,24 +27,35 @@
     <TB_ADMINISTRADOR id_admin = "13" matricula = "96534862" cargo = "3" />
     <TB_ADMINISTRADOR id_admin = "14" matricula = "96221133" cargo = "2" />
     
+    <TB_TELEFONE usuario_id="1" numero="995201778" ddd="081"/>
+    <TB_TELEFONE usuario_id="1" numero="923758461" ddd="081"/> 
+    <TB_TELEFONE usuario_id="1" numero="987452100" ddd="081"/>
+    <TB_TELEFONE usuario_id="1" numero="985203164" ddd="081"/> 
+            
     <TB_COORDENADA ponto_X = "-8.0791787" ponto_Y = "-34.9051573"/>
     <TB_COORDENADA ponto_X = "-8.0791789" ponto_Y = "-34.9020512"/>
     <TB_COORDENADA ponto_X = "-8.0792001" ponto_Y = "-34.9004512"/>
     <TB_COORDENADA ponto_X = "-8.1025913" ponto_Y = "-34.9388954"/>
+    <TB_COORDENADA ponto_X = "-7.9994119" ponto_Y = "-34.9349875"/>
+    <TB_COORDENADA ponto_X = "-8.0363486" ponto_Y = "-34.8952972"/>
     
-    <TB_ENDERECO id_coordenada = "1" rua = "Rua Leônidas Cravo Gama" numero = "120" bairro = "Afogados" cidade = "Recife"/>
-    <TB_ENDERECO id_coordenada = "2" rua = "Rua Armando Silva" numero = "95" bairro = "Afogados" cidade = "Recife"/>
-    <TB_ENDERECO id_coordenada = "3" rua = "Rua do Cacique" numero = "40" bairro = "Ibura" cidade = "Recife"/>
-    <TB_ENDERECO id_coordenada = "4" rua = "Rua da Ladeira" numero = "125" bairro = "Ibura" cidade = "Recife"/>
-    
+    <TB_ENDERECO num_versao="1" id_coordenada = "1" rua = "Rua Leônidas Cravo Gama" numero = "120" bairro = "Afogados" cidade = "Recife" CEP = "50770-000"/>
+    <TB_ENDERECO num_versao="1" id_coordenada = "2" rua = "Rua Armando Silva" numero = "95" bairro = "Afogados" cidade = "Recife" CEP = "50830-500"/>
+    <TB_ENDERECO num_versao="1" id_coordenada = "3" rua = "Rua do Cacique" numero = "40" bairro = "Ibura" cidade = "Recife" CEP = "51230-000"/>
+    <TB_ENDERECO num_versao="1" id_coordenada = "4" rua = "Rua da Ladeira" numero = "125" bairro = "Ibura" cidade = "Recife" CEP = "54240-695"/>
+    <TB_ENDERECO num_versao="1" id_coordenada = "5" rua = "Rua Córrego do Joaquim" numero = "20" bairro = "Nova Descoberta" cidade = "Recife" CEP = "52091-300" />
+    <TB_ENDERECO num_versao="1" id_coordenada = "6" rua = "Rua Nossa Senhora da Pompéia" numero = "200" bairro = "Encruzilhada" cidade = "Recife" CEP = "52041-160" />
+       
     <TB_PONTO_RISCO tipo_risco = "3" id_endereco = "1"/>
     <TB_PONTO_RISCO tipo_risco = "1" id_endereco = "2"/>
     <TB_PONTO_RISCO tipo_risco = "2" id_endereco = "3"/>
     <TB_PONTO_RISCO tipo_risco = "2" id_endereco = "4"/>
+    <TB_PONTO_RISCO tipo_risco = "1" id_endereco = "5"/>
+    <TB_PONTO_RISCO tipo_risco = "3" id_endereco = "6"/>
     
     <TB_CONTATO numero = "8132556679" descricao = "Defesa Civil Regional Sul"/>
     <TB_CONTATO numero = "8123908262" descricao = "Defesa Civil Regional Plana"/>
-    <TB_CONTATO numero = "8133556856" descricao = "Defesa Civil Regional Nordeste"/>
+    <TB_CONTATO numero = "8133556800" descricao = "Defesa Civil Regional Nordeste"/>
     <TB_CONTATO numero = "8133556615" descricao = "Defesa Civil Regional Noroeste"/>
     <TB_CONTATO numero = "8133556796" descricao = "Defesa Civil Regional Oeste"/>
     <TB_CONTATO numero = "8133772100" descricao = "Defesa Civil Regional 1"/>
@@ -54,6 +65,10 @@
     <TB_CONTATO numero = "193" descricao = "Corpo de Bombeiros"/>
     <TB_CONTATO numero = "197" descricao = "Polícia Civil"/>
     <TB_CONTATO numero = "199" descricao = "Defesa Civil"/>
+    
+    <TB_CONTATO numero = "8133553234" descricao = "CRAS Santo Amaro"/>
+    <TB_CONTATO numero = "8133554452" descricao = "CRAS Campina do Barreto"/>
+    <TB_CONTATO numero = "8133550399" descricao = "CRAS Dois Irmãos"/>
     
     <TB_SOLICITACAO descricao = "Solicito vistoria em barreira" tipo_solicitacao = "1" id_endereco = "1" id_usuario = "3" data_solicitacao = "2019-09-10 13:10:03" />
     <TB_SOLICITACAO descricao = "Desejo colocação de lona" tipo_solicitacao = "2" id_endereco = "1" id_usuario = "3" data_solicitacao = "2019-08-12 09:34:09" />

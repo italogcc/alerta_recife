@@ -35,17 +35,27 @@ import org.hibernate.validator.constraints.NotBlank;
             ,
             @NamedQuery(
                     name = "Solicitacao.RecuperarPorTipo",
-                    query = "SELECT s FROM Solicitacao s WHERE s.tipoDeSolicitacao = :tipo ORDER BY s.descricao"
+                    query = "SELECT s FROM Solicitacao s WHERE s.tipoDeSolicitacao = ?1 ORDER BY s.descricao"
             )
             ,
             @NamedQuery(
                     name = "Solicitacao.RecuperarNaoAtendidos",
                     query = "SELECT s FROM Solicitacao s WHERE s.dataConclusao IS NULL"
-            )
+            ),
+            @NamedQuery(
+                    name = "Solicitacao.RecuperarPorUsuario",
+                    query = "SELECT s FROM Solicitacao s WHERE s.usuario IN (SELECT u FROM Usuario u WHERE u.email = ?1)"
+            )    
         }
 )
 @NamedNativeQueries(
         {
+            @NamedNativeQuery(
+                    name = "Solicitacao.RecuperarPorIdSQL",
+                    query = "SELECT * FROM TB_SOLICITACAO WHERE ID = ?",
+                    resultClass = Solicitacao.class
+            )
+            ,
             @NamedNativeQuery(
                     name = "Solicitacao.RecuperarPorDescricaoSQL",
                     query = "SELECT * FROM TB_SOLICITACAO WHERE DESCRICAO = ? ORDER BY DESCRICAO",
@@ -71,14 +81,14 @@ public class Solicitacao implements Serializable {
     @NotNull(message = "{ifpe.recife.tads.alerta_recife.Solicitacao.descricao_required}")
     @Size(min = 1, max = 220,
             message = "{ifpe.recife.tads.alerta_recife.Solicitacao.descricao_tamanho}")
-    @Pattern(regexp = "^[A-Za-z0-9]+$",
+    @Pattern(regexp = "^[A-Za-z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\\s]+$",
             message = "{ifpe.recife.tads.alerta_recife.Solicitacao.descricao_caracter}")
     @Column(name = "DESCRICAO", length = 220)
     private String descricao;
 
     @NotNull(message = "{ifpe.recife.tads.alerta_recife.Solicitacao.tipo_required}")
     @Column(name = "TIPO_SOLICITACAO")
-    private TipoDeSolicitacao tipoDeSolicitacao;
+    private int tipoDeSolicitacao;
 
     @NotNull
     @ManyToOne(optional = false)
@@ -103,7 +113,7 @@ public class Solicitacao implements Serializable {
     public Solicitacao() {
     }
 
-    public Solicitacao(Long id, String descricao, TipoDeSolicitacao tipoDeSolicitacao, Endereco endereco, Usuario usuario, Date dataSolicitacao, Date dataConclusao) {
+    public Solicitacao(Long id, String descricao, int tipoDeSolicitacao, Endereco endereco, Usuario usuario, Date dataSolicitacao, Date dataConclusao) {
         this.id = id;
         this.descricao = descricao;
         this.tipoDeSolicitacao = tipoDeSolicitacao;
@@ -129,11 +139,11 @@ public class Solicitacao implements Serializable {
         this.descricao = descricao;
     }
 
-    public TipoDeSolicitacao getTipoDeSolicitacao() {
+    public int getTipoDeSolicitacao() {
         return tipoDeSolicitacao;
     }
 
-    public void setTipoDeSolicitacao(TipoDeSolicitacao tipoDeSolicitacao) {
+    public void setTipoDeSolicitacao(int tipoDeSolicitacao) {
         this.tipoDeSolicitacao = tipoDeSolicitacao;
     }
 

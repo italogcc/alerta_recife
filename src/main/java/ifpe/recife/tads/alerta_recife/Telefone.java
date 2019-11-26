@@ -10,11 +10,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TB_TELEFONE")
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = "Telefone.RecuperarTelefones",
+                    query = "SELECT t FROM Telefone t"
+            ),
+            @NamedQuery(
+                    name = "Telefone.RecuperarPorNumero",
+                    query = "SELECT t FROM Telefone t WHERE t.numero = :numero"
+            ),
+            @NamedQuery(
+                    name = "Telefone.RecuperarPorUsuario",
+                    query = "SELECT t FROM Telefone t WHERE t.usuario IN (SELECT u FROM Usuario u WHERE u.email = ?1)"
+            )    
+        }
+)
 @Access(AccessType.FIELD)
 public class Telefone implements Serializable {
 
@@ -23,8 +42,8 @@ public class Telefone implements Serializable {
     @Column(name = "ID")
     private Long id;
 
-    @ManyToMany(mappedBy = "telefones")
-    private List<Usuario> usuarios;
+    @ManyToOne
+    private Usuario usuario;
 
     @NotNull
     @Column(name = "NUMERO")
@@ -38,9 +57,9 @@ public class Telefone implements Serializable {
 
     }
 
-    public Telefone(Long id, List<Usuario> usuarios, String numero, String ddd) {
+    public Telefone(Long id, Usuario usuario, String numero, String ddd) {
         this.id = id;
-        this.usuarios = usuarios;
+        this.usuario = usuario;
         this.numero = numero;
         this.ddd = ddd;
     }
@@ -53,12 +72,12 @@ public class Telefone implements Serializable {
         this.id = id;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getNumero() {

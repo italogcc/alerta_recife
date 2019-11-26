@@ -1,6 +1,8 @@
 package ifpe.recife.tads.alerta_recife;
 
 import java.io.Serializable;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -10,63 +12,69 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import org.hibernate.annotations.NamedNativeQueries;
-import org.hibernate.annotations.NamedNativeQuery;
+import javax.validation.executable.ExecutableType;
+import javax.validation.executable.ValidateOnExecution;
 
 @Entity
-@Table(name="TB_ADMINISTRADOR")
+@Table(name = "TB_ADMINISTRADOR")
 @NamedQueries(
         {
             @NamedQuery(
                     name = "Administrador.RecuperarPorMatricula",
-                    query = "SELECT a FROM Administrador a WHERE a.matricula = :matricula"
+                    query = "SELECT a FROM Administrador a WHERE a.matricula = ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = "Administrador.RecuperarPorMatriculaNumero",
+                    query = "SELECT count(a) FROM Administrador a WHERE a.matricula = ?1"
             )
             ,
             @NamedQuery(
                     name = "Administrador.RecuperarPorCargo",
                     query = "SELECT a FROM Administrador a WHERE a.cargo = :cargo ORDER BY a.primeiroNome"
             )
-        }
-)
-@NamedNativeQueries(
-        {
-            @NamedNativeQuery(
-                    name = "Administrador.RecuperarPorMatriculaSQL",
-                    query = "SELECT * FROM TB_ADMINISTRADOR adm JOIN TB_USUARIO usr ON adm.ID_ADMIN = usr.ID WHERE adm.MATRICULA = ?",
-                    resultClass = Administrador.class
+            ,
+            @NamedQuery(
+                    name = "Administrador.RecuperarPorCargoNumero",
+                    query = "SELECT a FROM Administrador a WHERE a.cargo IS NOT NULL AND a.cargo = ?1"
             )
             ,
-            @NamedNativeQuery(
-                    name = "Administrador.RecuperarPorCargoSQL",
-                    query = "SELECT * FROM TB_ADMINISTRADOR WHERE CARGO = ? ORDER BY PRIMEIRO_NOME",
-                    resultClass = Administrador.class
+            @NamedQuery(
+                    name = "Administrador.RecuperarPorNome",
+                    query = "SELECT a FROM Administrador a WHERE a.primeiroNome LIKE ?1 OR a.ultimoNome LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = "Administrador.RecuperarPorId",
+                    query = "SELECT a FROM Administrador a WHERE a.id = ?1"
             )
         }
 )
+
 @Access(AccessType.FIELD)
 @DiscriminatorValue(value = "ADMIN")
 @PrimaryKeyJoinColumn(name = "ID_ADMIN", referencedColumnName = "ID")
 public class Administrador extends Usuario implements Serializable {
-	
-    @NotNull(message = "{ifpe.recife.tads.alerta_recife.Administrador.matricula_required}")
-    @Size(min = 8, max = 10, 
-            message = "{ifpe.recife.tads.alerta_recife.Administrador.matricula_tamanho}")
+
+    @NotNull
+    @Size(min = 8, max = 10)
     @Pattern(regexp = "^[0-9]+$",
-            message = "{ifpe.recife.tads.alerta_recife.Administrador.matricula_caracter}")
-    @Column(name="MATRICULA", unique=true, length = 10)
+            message = "{ifpe.recife.tads.alerta_recife.Administrador.matricula}")
+    @Column(name = "MATRICULA", unique = true)
     private String matricula;
 
     @NotNull(message = "{ifpe.recife.tads.alerta_recife.Administrador.cargo_required}")
-    @Column(name="CARGO")
-    private int cargo; 
+    @Column(name = "CARGO")
+    private int cargo;
 
-    public Administrador(){
-        
+    public Administrador() {
+
     }
-    
+
     public Administrador(String matricula, int cargo) {
         this.matricula = matricula;
         this.cargo = cargo;
