@@ -11,7 +11,7 @@
             <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
             <h:outputStylesheet library="css" name="styles.css" />
             <h:outputScript library="js" name="index.js" />
-            <script type='text/javascript' src='#{Login.caminho}' async='true' defer='true'></script>
+            <script type='text/javascript' src='#{Login.MAP_KEY}' async='true' defer='true'></script>
         </h:head>
         
 
@@ -40,9 +40,9 @@
                     <p:menu>
                         <p:submenu label="Resources">
                             <p:menuitem value="Registrar área de risco" onclick="loadMapScenario(), PF('dlg1').show();" />
-                            <p:menuitem value="Solicitar serviço" onclick="tabela()" />
-                            <p:menuitem value="Contatos" onclick="contatos()" />
-                            <p:menuitem value="Salvar telefone" onclick="cadastroTel()" />
+                            <p:menuitem value="Solicitar serviço" onclick="tabela(), PF('dlg').hide();" />
+                            <p:menuitem value="Contatos" onclick="contatos(), PF('dlg').hide();" />
+                            <p:menuitem value="Salvar telefone" onclick="cadastroTel(), PF('dlg').hide();" />
                             <p:menuitem action="indexLogin.xhtml" value="Sair" />
                         </p:submenu>
 
@@ -53,7 +53,7 @@
                 <p:layoutUnit position="center">
                     <div id='myMap'  style='width: 100vw; height: 100vh;'></div>
                                         
-                    <p:dialog id="solicitaocorrencia" header="Área de risco" widgetVar="dlg" showEffect="fade">
+                    <p:dialog id="solicitaocorrencia" header="Área de risco" widgetVar="dlg" hideEffect="fade" showEffect="fade">
                      <h:form prependId="false">
                         <!--<h:panelGrid columns="2">-->
                         <!--Ajustar o posicionamento-->
@@ -81,7 +81,7 @@
                             <p></p>    
                             <f:facet name="footer">
                                 <h:commandButton value="Cadastrar" action="#{Endereco.cadastrar}"  />
-                                <h:commandButton value="Cancelar" />
+                                <input type="button" value="Cancelar" onclick="PF('dlg').hide();"></input>
                             </f:facet>
                         </h:panelGrid>
                         
@@ -115,7 +115,7 @@
                             </p:column>
                             <p:column selectionMode="single" style="width:16px;text-align:center"/>
                             <f:facet name="footer">
-                                <p:commandButton style="width: 0px;height: 0px" process="radioDT" value="" />
+                                <p:commandButton style="display: none;" process="radioDT" value="Processar" />
                             </f:facet>
                         </p:dataTable>
                         

@@ -7,6 +7,7 @@
 
     <h:head>
         <title>Alerta Recife</title>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     </h:head>
     <h:body onload="#{Login.preencherBanco()}">
         <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife"/>
@@ -45,8 +46,13 @@
                 
             </h:panelGrid>
             <p></p>
+            <h:outputLabel id="recaptcha">
+                <div class="g-recaptcha" data-sitekey="6LcA4BETAAAAAI-bIVcCocgXyiLZ43bCJ-JyCvWV"></div>
+            </h:outputLabel>
+            <br></br>
             <h:commandButton action="#{Cadastro.cadastrar}" value="Cadastrar" />          
-
+            <h:message for="recaptcha" id="captcha" binding="#{Cadastro.mybutton}" style="color:red"/>
+                <a style="font-size: 20px;"><h:message for="captcha" style="color:red"/></a>
         </h:form>
         
         <p>

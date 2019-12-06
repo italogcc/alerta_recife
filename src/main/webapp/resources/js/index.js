@@ -29,6 +29,10 @@
         document.getElementById('contatos').style.display = 'none';
     }
    
+    function validar() {
+        
+    }
+   
    
                 function loadMapScenario() {
                     

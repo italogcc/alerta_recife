@@ -63,13 +63,29 @@ public class Cadastro {
         }   
         
         else {
-            Usuario usuario = new Usuario();
-            usuario.setEmail(email);
-            usuario.setSenha(senha);
-            usuario.setPrimeiroNome(nome);
-            usuario.setUltimoNome(sobrenome);
-            usuarioServico.persistir(usuario);
-            return "encontrado";
+            try {
+                String gRecaptchaResponse = FacesContext.getCurrentInstance().
+                  getExternalContext().getRequestParameterMap().get("g-recaptcha-response");
+                 boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+                 if(verify){
+                     Usuario usuario = new Usuario();
+                     usuario.setEmail(email);
+                     usuario.setSenha(senha);
+                     usuario.setPrimeiroNome(nome);
+                     usuario.setUltimoNome(sobrenome);
+                     usuarioServico.persistir(usuario);
+                     return "encontrado";
+                 }else{
+                     context.addMessage(mybutton.getClientId(context), 
+                                  new FacesMessage("","  Selecione o captcha!"));
+                                  return "invalido";
+                 }
+            } catch (Exception e) {
+                context.addMessage(mybutton.getClientId(context), 
+                        new FacesMessage("", e.toString()));
+                        return "invalido";
+            }
+            
         } 
     }
       
