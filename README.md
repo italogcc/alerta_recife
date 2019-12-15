@@ -21,12 +21,12 @@ O acesso ao sistema será via internet pelo browser e para contribuir com a base
 ## Monetização
 Propagandas e/ou venda da solução para o sistema público.
 
-## Ferramental utilizado
-Database: MySQL;
-IDE: Netbeans;
-Linguagem de projeto: Java Web - EBJ, JSF;
-Testes: JUnit;
-Versionamento: Github;
+## Ferramentas
+- Database: MySQL;
+- IDE: Netbeans;
+- Linguagem de projeto: Java Web - EBJ, JSF;
+- Testes: JUnit;
+- Versionamento: Github;
 
 ## Contribuidores
 Este projeto está sob a orientação do professor Vilmar Santos Nepomuceno do IFPE com a colaboração dos seguintes alunos:
