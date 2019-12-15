@@ -1,0 +1,13 @@
+#message{
+    color:red; 
+    font-size: 14px;
+}
+#loginForm{
+    text-align: center;
+}
+#loginFormInput{
+    margin-left: 42%;
+}
+.g-recaptcha{
+    margin-left: 38%;
+}

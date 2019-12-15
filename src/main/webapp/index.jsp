@@ -2,12 +2,12 @@
 <!doctype html>
 <html lang="pt">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link href="css/index.css" rel="stylesheet">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link href="css/index.css" rel="stylesheet"/>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-fixed-top">
@@ -18,7 +18,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img id="logonImg" src="logo.png">
+                    <img id="logonImg" src="logo.png"/>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <button type="button" class="btn" onclick='window.location = "indexLogin.xhtml"' >
@@ -31,7 +31,7 @@
             </div>
         </nav>        
         <div id="mainContainer" class="container-fluid">
-            <img id="mainLogo" src="logo.png">
+            <img id="mainLogo" src="logo.png"/>
             <p id="explanation">
                 Alerta Recife é a forma mais eficiente de informar <br/> 
                 à prefeitura sobre incidentes com estruturas <br/>  
