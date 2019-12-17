@@ -4,9 +4,9 @@ Projeto Alerta Recife
 O Alerta Recife possui código desenvolvido no Netbeans 8.2 e faz uso do container EJB, do servidor Glassfish 4.1.1 e SGBD MySQL 5.7. É preferível executar o projeto em SO Linux como Ubuntu.
 
 ## Instruções de uso
-- Ao abrir o projeto na IDE deve-se aguardar o carregamento inicial e editar o arquivo "pom.xml" localizado em "Arquivos do Projeto";
+- Ao abrir o projeto no IDE Netbeans deve-se aguardar o carregamento inicial e editar o arquivo "pom.xml" localizado em "Arquivos do Projeto";
 - Localizar a tag: 
-> <glassfish.embedded-static-shell.jar>/home/henrique/glassfish-4.1.1/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
+> <glassfish.embedded-static-shell.jar>/home/usuario/glassfish-4.1.1/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
 
 ou 
 
