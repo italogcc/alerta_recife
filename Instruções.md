@@ -19,4 +19,4 @@ e editar o caminho com a localização do arquivo "glassfish-embedded-static-she
 - Verificar em "Common Tasks > Resources > JDBC", clicar em JDBC Resources e verificar na coluna JNDI Name o registro de "jdbc/alerta_recife" com Connection Pool "mysql_alerta_recife_rootPool";
 - Realizar o logon no MySQL com login:root e senha:root;
 - Criar uma base de dados com o comando "create database alerta_recife;";
-- De volta ao IDE Netbeans, executar o projeto a partir do "index.html".
+- De volta ao IDE Netbeans, executar o projeto a partir do "index.jsp".
