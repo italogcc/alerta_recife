@@ -11,3 +11,16 @@
 .g-recaptcha{
     margin-left: 38%;
 }
+#cadLink{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+    #loginFormInput{
+        margin-left: 30%;
+    }
+    .g-recaptcha{
+        margin-left: 20%;
+    }
+}
