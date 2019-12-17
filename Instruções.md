@@ -12,7 +12,7 @@ ou
 
 > <glassfish.embedded-static-shell.jar>C:\\Programas\\glassfish\\4.1.1\\glassfish\\lib\\embedded\\glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
 
-e editar o caminho do arquivo "glassfish-embedded-static-shell.jar" de onde se está instalado o Glassfish;
+e editar o caminho com a localização do arquivo "glassfish-embedded-static-shell.jar" de onde está instalado o Glassfish;
 - Após salvar o ajuste no "pom.xml" construir o projeto com as dependências;
 - Iniciar o servidor Glassfish e acessar o endereço de localhost, normalmente <http://localhost:4848/>;
 - Em "Common Tasks > Resources" clicar no botão "Add Resources" e localizar o arquivo "glassfish-resources.xml" do projeto. O arquivo fica localizado em <\src\main\webapp\WEB-INF>;
