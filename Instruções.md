@@ -8,11 +8,12 @@ O Alerta Recife possui código desenvolvido no Netbeans 8.2 e faz uso do contain
 - Localizar a tag: 
 > <properties>
         <glassfish.embedded-static-shell.jar><glassfish.embedded-static-shell.jar>/home/henrique/glassfish-4.1.1/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
-</properties>
+
 ou 
+
 > <properties>
         <glassfish.embedded-static-shell.jar>C:\\Programas\\glassfish\\4.1.1\\glassfish\\lib\\embedded\\glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
-</properties>
+
 e editar o caminho do arquivo "glassfish-embedded-static-shell.jar" de onde se está instalado o Glassfish;
 - Após salvar o ajuste no "pom.xml" construir o projeto com as dependências;
 - Iniciar o servidor Glassfish e acessar o endereço de localhost, normalmente <http://localhost:4848/>;
