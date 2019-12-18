@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <p>Clique no botão para pegar as coordenadas da posição atual.</p>
+
+        <button onclick="getLocation()">Captura</button>
+
+        <p id="localizacao"></p>
+
+        <script>
+            var x = document.getElementById("localizacao");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition, showError);
+                } else {
+                    x.innerHTML = "Geolocalização não é suportada por este browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude +
+                        "<br>Longitude: " + position.coords.longitude;
+            }
+
+            function showError(error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        x.innerHTML = "Usuário negou a requisição feita pela Geolocalização."
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        x.innerHTML = "As informações de localização estão indisponíveis."
+                        break;
+                    case error.TIMEOUT:
+                        x.innerHTML = "O pedido para obter a localização do usuário expirou."
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        x.innerHTML = "Ocorreu um erro desconhecido."
+                        break;
+                }
+            }
+        </script>
+
+    </body>
+</html>

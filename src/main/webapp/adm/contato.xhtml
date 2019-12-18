@@ -5,68 +5,59 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-           
     <f:view contentType="text/html">
         <h:head>
             <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
             <h:outputStylesheet library="css" name="styles.css" />
             <h:outputScript library="js" name="index.js" />
         </h:head>
-        
+
 
         <h:body>
-            
+
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="0" resizable="true" closable="true" collapsible="true">
-                    <p:graphicImage style="width:80px; height:80px" library="imagens" name="logo.png"/>
-                </p:layoutUnit>
+                <p:layoutUnit position="west" size="230" header="Alerta Recife" collapsible="true">
+                    <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife" width="150" height="150"/>                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Contatos">
+                                <p:menuitem value="Voltar" action="/adm/principal.xhtml" />
+                                <p:menuitem action="/indexLogin.xhtml" value="Sair" />
+                            </p:submenu>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    
-                </p:layoutUnit>
-               
-                <p:layoutUnit position="west" size="210" header="Servicos" collapsible="true">
-                    <h:form>
-                    <p:menu>
-                        <p:submenu label="Opções">
-                            <p:menuitem value="Voltar" action="/adm/principal.xhtml" />
-                            <p:menuitem action="/indexLogin.xhtml" value="Sair" />
-                        </p:submenu>
-
-                    </p:menu>
+                        </p:menu>
                     </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                                                   
+
                     <div >
                         <h:form>
 
-                        <p:outputLabel style="font-size:25px; font-weight: bold" value="Cadastrar contato" />  <br></br><br></br>  
-                        <p:outputLabel  style="font-weight: bold" value="Descrição: " /> <br></br>
-                        <p:inputText id="descricao" value="#{Contato.descricao}" maxlength="100" required="true" 
+                            <p:outputLabel style="font-size:25px; font-weight: bold" value="Cadastrar contato" />  <br></br><br></br>  
+                            <p:outputLabel  style="font-weight: bold" value="Descrição: " /> <br></br>
+                            <p:inputText id="descricao" value="#{Contato.descricao}" maxlength="100" required="true" 
                                          requiredMessage="O campo descrição deve ser preenchido!"                                         
                                          />
-                        <a style="color:red; font-size: 20px"><h:message for="descricao" /></a>
-                        <br></br><br></br>
-                        <p:outputLabel  style="font-weight: bold" value="Telefone: " /> <br></br>
-                        <p:inputText id="num" value="#{Contato.telefone}" maxlength="10" required="true" 
+                            <a style="color:red; font-size: 20px"><h:message for="descricao" /></a>
+                            <br></br><br></br>
+                            <p:outputLabel  style="font-weight: bold" value="Telefone: " /> <br></br>
+                            <p:inputText id="num" value="#{Contato.telefone}" maxlength="10" required="true" 
                                          requiredMessage=" O campo telefone deve ser preenchido!" 
                                          converterMessage=" O campo telefone é numérico!"
                                          />
-                        <a style="color:red; font-size: 20px"><h:message for="num" /></a>
-                        <br></br><br></br>
-                        <p:commandButton ajax="false" action="#{Contato.cadastrar()}" value="Cadastrar" />
-                                                 
+                            <a style="color:red; font-size: 20px"><h:message for="num" /></a>
+                            <br></br><br></br>
+                            <p:commandButton ajax="false" action="#{Contato.cadastrar()}" value="Cadastrar" />
+
                         </h:form>   
                     </div>   
-                    
-                        
+
+
                 </p:layoutUnit>
 
             </p:layout>
-            
+
         </h:body>
 
     </f:view>

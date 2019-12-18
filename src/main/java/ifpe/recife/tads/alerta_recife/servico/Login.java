@@ -10,7 +10,6 @@ import ifpe.recife.tads.alerta_recife.Usuario;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -42,8 +41,8 @@ public class Login {
          try {
               String gRecaptchaResponse = context.
 		getExternalContext().getRequestParameterMap().get("g-recaptcha-response");
-                boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
-                //boolean verify = true;
+                //boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+                boolean verify = true;
               if(user != null) {
                     if(user.getSenha().equals(senha)) {
                              

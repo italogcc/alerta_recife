@@ -5,81 +5,70 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-           
     <f:view contentType="text/html">
         <h:head>
             <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
             <h:outputStylesheet library="css" name="styles.css" />
             <h:outputScript library="js" name="index.js" />
         </h:head>
-        
 
         <h:body>
-            
+
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="0" resizable="true" closable="true" collapsible="true">
-                    <p:graphicImage style="width:80px; height:80px" library="imagens" name="logo.png"/>
-                </p:layoutUnit>
+                <p:layoutUnit position="west" size="230" header="Alerta Recife" collapsible="true">
+                    <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife" width="150" height="150"/>                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Alterar dados pessoais">
+                                <p:menuitem value="Voltar" action="/adm/principal.xhtml" />
+                                <p:menuitem action="/indexLogin.xhtml" value="Sair" />
+                            </p:submenu>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    
-                </p:layoutUnit>
-               
-                <p:layoutUnit position="west" size="210" header="Servicos" collapsible="true">
-                    <h:form>
-                    <p:menu>
-                        <p:submenu label="Opções">
-                            <p:menuitem value="Voltar" action="/adm/principal.xhtml" />
-                            <p:menuitem action="/indexLogin.xhtml" value="Sair" />
-                        </p:submenu>
-
-                    </p:menu>
+                        </p:menu>
                     </h:form>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center">
-                                                   
+
                     <div >
                         <h:form>
 
                             <p:outputLabel style="font-size:25px; font-weight: bold" value="Alterar dados pessoais" />  <br></br><br></br>  
-                        <p:outputLabel  style="font-weight: bold" value="Primeiro nome: " /> <br></br>
-                        <p:inputText id="primeiro" value="#{Usuario.usuario.primeiroNome}" maxlength="50" required="true" 
+                            <p:outputLabel  style="font-weight: bold" value="Primeiro nome: " /> <br></br>
+                            <p:inputText id="primeiro" value="#{Usuario.usuario.primeiroNome}" maxlength="50" required="true" 
                                          requiredMessage="O campo primeiro nome deve ser preenchido!"                                         
                                          />
-                        <a style="color:red; font-size: 20px"><h:message for="primeiro" /></a>
-                        <br></br><br></br>
-                        <p:outputLabel  style="font-weight: bold" value="Último nome: " /> <br></br>
-                        <p:inputText id="ultimo" value="#{Usuario.usuario.ultimoNome}" maxlength="50" required="true" 
+                            <a style="color:red; font-size: 20px"><h:message for="primeiro" /></a>
+                            <br></br><br></br>
+                            <p:outputLabel  style="font-weight: bold" value="Último nome: " /> <br></br>
+                            <p:inputText id="ultimo" value="#{Usuario.usuario.ultimoNome}" maxlength="50" required="true" 
                                          requiredMessage=" O campo último nome deve ser preenchido!"                                          
                                          />
-                        <a style="color:red; font-size: 20px"><h:message for="ultimo" /></a>
-                        <br></br><br></br>
-                        <p:outputLabel  style="font-weight: bold" value="Email: " /> <br></br>
-                        <p:inputText id="email" value="#{Usuario.usuario.email}" maxlength="100" required="true" 
+                            <a style="color:red; font-size: 20px"><h:message for="ultimo" /></a>
+                            <br></br><br></br>
+                            <p:outputLabel  style="font-weight: bold" value="Email: " /> <br></br>
+                            <p:inputText id="email" value="#{Usuario.usuario.email}" maxlength="100" required="true" 
                                          requiredMessage=" O campo email deve ser preenchido!"                                          
                                          />
-                        <a style="color:red; font-size: 20px"><h:message for="email" /></a>
-                        <br></br><br></br>
-                        <p:outputLabel  style="font-weight: bold" value="Senha: " /> <br></br>
-                        <p:inputText id="senha" value="#{Usuario.usuario.senha}" maxlength="200" required="true" 
+                            <a style="color:red; font-size: 20px"><h:message for="email" /></a>
+                            <br></br><br></br>
+                            <p:outputLabel  style="font-weight: bold" value="Senha: " /> <br></br>
+                            <p:inputText id="senha" value="#{Usuario.usuario.senha}" maxlength="200" required="true" 
                                          requiredMessage=" O campo senha deve ser preenchido!"                                          
                                          />
-                        <a style="color:red; font-size: 20px"><h:message for="senha" /></a>
-                        <br></br><br></br>                        
-                        <p:commandButton ajax="false" action="#{Usuario.alterarDadosPessoais()}" value="Alterar" />
-                        <p:outputLabel binding="#{Usuario.mybutton}" id="mybutton" />
-                        <a style="color:red; font-size: 20px"><h:message for="mybutton" /></a>
-                        
+                            <a style="color:red; font-size: 20px"><h:message for="senha" /></a>
+                            <br></br><br></br>                        
+                            <p:commandButton ajax="false" action="#{Usuario.alterarDadosPessoais()}" value="Alterar" />
+                            <p:outputLabel binding="#{Usuario.mybutton}" id="mybutton" />
+                            <a style="color:red; font-size: 20px"><h:message for="mybutton" /></a>
+
                         </h:form>   
                     </div>   
-                    
-                        
+
                 </p:layoutUnit>
 
             </p:layout>
-            
+
         </h:body>
 
     </f:view>

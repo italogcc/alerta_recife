@@ -15,7 +15,6 @@ import javax.persistence.TypedQuery;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import ifpe.recife.tads.alerta_recife.Entidade;
-import ifpe.recife.tads.alerta_recife.Usuario;
 
 
 @TransactionManagement(CONTAINER)

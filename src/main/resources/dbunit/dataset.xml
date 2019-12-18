@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <dataset>
-    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="rosaalexandrino@gmail.com" senha = "hBuxA23" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="ADMIN" email ="rosaalexandrino@gmail.com" senha = "admin" primeiro_nome = "Rosa" ultimo_nome = "Alexandrino" habilitado = "1" />
     <TB_USUARIO num_versao="1" dtype="ADMIN" email ="igormoraes@gmail.com" senha = "LbyI20" primeiro_nome = "Igor" ultimo_nome = "Moraes" habilitado = "1" />
     <TB_USUARIO num_versao="1" dtype="Usuario" email ="joanamendonca@gmail.com" senha = "aopHMXX9" primeiro_nome = "Joana" ultimo_nome = "Mendonça" habilitado = "0" />
-    <TB_USUARIO num_versao="1" dtype="Usuario" email ="mariojorge@outlook.com" senha = "2pKbVjpe" primeiro_nome = "Mario" ultimo_nome = "Jorge" habilitado = "1" />
+    <TB_USUARIO num_versao="1" dtype="Usuario" email ="mariojorge@outlook.com" senha = "usuario" primeiro_nome = "Mario" ultimo_nome = "Jorge" habilitado = "1" />
     <TB_USUARIO num_versao="1" dtype="ADMIN" email ="maiconrodrigues@bol.com.br" senha = "MYJZf8gQ" primeiro_nome = "Maicon" ultimo_nome = "Rodrigues" habilitado = "1" />
     <TB_USUARIO num_versao="1" dtype="ADMIN" email ="joicesantos@hotmail.com" senha = "oB6LE1eF" primeiro_nome = "Joice" ultimo_nome = "Santos" habilitado = "1" />
     <TB_USUARIO num_versao="1" dtype="Usuario" email ="mariaaparecida@live.com" senha = "oPpP2rZN" primeiro_nome = "Maria" ultimo_nome = "Aparecida" habilitado = "0" />

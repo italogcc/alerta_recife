@@ -5,91 +5,93 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-           
     <f:view contentType="text/html">
         <h:head>
             <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
             <h:outputStylesheet library="css" name="styles.css" />
             <h:outputScript library="js" name="index.js" />            
         </h:head>
-        
 
-        <h:body onload="esconder(),#{Indicador.condicoesAtuais()}">
-            
+        <h:body onload="esconder(),loadMapScenario(),#{Login.MAP_KEY},#{Indicador.condicoesAtuais()}">
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="0" resizable="true" closable="true" collapsible="true">
-                    <p:graphicImage style="width:80px; height:80px" library="imagens" name="logo.png"/>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                                
-                    
-                </p:layoutUnit>
-
-                
-                #{api.total = 0}
-                #{api.posicao = 0}
-                
-                <p:layoutUnit position="west" size="240" header="Servicos" collapsible="true">
+                <p:layoutUnit position="west" size="230" header="Alerta Recife" collapsible="true">
+                    <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife" width="150" height="150"/>
                     <h:form>
                         <p:menubar>
-                            <p:submenu label="Opções">
+                            <p:submenu label="Serviços">
                                 <p:menuitem action="/adm/registroLocal.xhtml" value="Registrar área de risco"/>
                                 <p:menuitem action="/adm/servico.xhtml" value="Solicitar serviço"/>
                                 <p:menuitem action="/adm/telefone.xhtml" value="Salvar telefone"/>
                                 <p:menuitem action="/adm/contato.xhtml" value="Salvar contato"/>
                                 <p:menuitem value="Listar contatos" onclick="contatos()" />
-                                <p:menuitem action="/adm/usuarios.xhtml" value="Listar usuários" />
+                                <p:menuitem action="/adm/listarUsuarios.xhtml" value="Listar usuários" />
                                 <p:menuitem action="/adm/alterarDados.xhtml" value="Alterar dados pessoais" />
                                 <p:menuitem action="/adm/previsaoTempo.xhtml" value="Previsão do tempo" />
                                 <p:menuitem action="/indexLogin.xhtml" value="Sair" />
                             </p:submenu>                            
                         </p:menubar>
                         
+                        <p:menubar>
+                            <p:submenu label="Acessar dados remotos">
+                                <p:menuitem ajax="false" action="#{api.buscarLonas()}" value="Lonas"/>
+                                <p:menuitem ajax="false" action="#{api.buscarVistorias()}" value="Vistorias"/>
+                                <p:menuitem ajax="false" action="#{api.buscarSolicitacoes()}" value="Solicitações"/>
+                            </p:submenu>                            
+                        </p:menubar>
                     </h:form>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    
-                    <h:form>
-                      <p:menuButton value="Acessar dados remotos">
-                          <p:menuitem ajax="false" action="#{api.buscarLonas()}" value="Lonas"/>
-                          <p:menuitem ajax="false" action="#{api.buscarVistorias()}" value="Vistorias"/>
-                          <p:menuitem ajax="false" action="#{api.buscarSolicitacoes()}" value="Solicitacoes"/>
-                      </p:menuButton>    
-                    </h:form>
-                        
                     <p:dialog visible='#{Endereco.resp.length() > 0 ? "true" : "false"}' appendTo="@(body)" 
                               widgetVar="resp" modal="true" hideEffect="fade" showEffect="fade" height="150">
                         <p:graphicImage style="width:80px; height:80px" library="imagens" name="verified.png"/>
                         <h:outputText class="resp" value="#{Endereco.resp}" />                        
                     </p:dialog>   
+
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
                     
-                    #{Endereco.setResp("")}
-                    
-                    <div id="condicoes">
-                         <p:growl id="msgs" showDetail="true"  />
-                             
-                                <p:fieldset id="field" legend="Condições atuais do tempo">
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:graphicImage style="width:80px; height:80px" library="imagens" name="#{Indicador.imagem}" />
+                    <div id='myMap'  style='width: 100vw; height: 100vh;'></div>
                                         
-                                            <p class="tempo">Última atualização: #{Indicador.atualizacao}</p>
-                                            <p class="tempo">Tempo: #{Indicador.condicao}</p>
-                                            <p class="tempo">Temperatura média: #{Indicador.temp} °C</p>
-                                            <p class="tempo">Umidade relativa do ar: #{Indicador.umidade}%</p>
-                                            <p class="tempo">Velocidade do vento: #{Indicador.vento} km/h</p>
-                                    </h:panelGrid>
-                                    
-                                </p:fieldset>                
-                           
-                    </div>
-                                       
-                    <div style="display: none" id="contatos">
-                        
-                        <h:form>
+                    <p:dialog width="300" modal="true" appendTo="@(body)" header="Área de risco" 
+                              widgetVar="dlg" hideEffect="fade" showEffect="fade">
+                     <h:form prependId="false">
+                        <!--<h:panelGrid columns="2">-->
+                        <!--Ajustar o posicionamento-->
+                        <h:panelGrid >
+                            <h:outputText id="cidade" styleClass="address" value="" />
+                            <h:inputHidden id="cidade1" value="#{Endereco.cidade}" />
+                            <h:outputText id="bairro" styleClass="address" value="" />
+                            <h:inputHidden id="bairro1" value="#{Endereco.bairro}" />
+                            <h:outputText id="rua" styleClass="address" value="" />
+                            <h:inputHidden id="rua1" value="#{Endereco.rua}" />
+                            <h:outputText id="numero" styleClass="address" value="" />
+                            <h:inputHidden id="numero1" value="#{Endereco.numero}" />
+                            <h:outputText id="CEP" styleClass="address" value="" />
+                            <h:inputHidden id="CEP1" value="#{Endereco.CEP}" />                            
                             
+                            <h:inputHidden id="lat" value="#{Endereco.pontoX}" />
+                            <h:inputHidden id="long" value="#{Endereco.pontoY}" />
+                            
+                            <p:outputLabel for="tipo_risco" value="Tipo de risco:" />
+                            <p:selectOneMenu id="tipo_risco" value="#{Endereco.risco}" style="width:125px">
+                                <f:selectItem itemLabel="Deslizamento" itemValue="1" />
+                                <f:selectItem itemLabel="Alagamento" itemValue="2" />
+                                <f:selectItem itemLabel="Estrutural" itemValue="3" />
+                            </p:selectOneMenu>
+                            <p></p>    
+                            <f:facet name="footer">
+                                <p:commandButton ajax="false" value="Cadastrar" action="#{Endereco.cadastrar}"  />
+                                <p:commandButton value="Cancelar" onclick="PF('dlg').hide();"/>                                
+                            </f:facet>
+                        </h:panelGrid>
+                        
+                     </h:form>
+                    </p:dialog>
+                    
+                    <div style="display: none" id="contatos">
+                        <h:form>
+
                             <p:dataTable value="#{Contato.lista}" var="contato" >
                                 <p:column headerText="Descrição">
                                     <h:outputText value="#{contato.descricao}" />
@@ -100,12 +102,55 @@
                             </p:dataTable>                        
 
                         </h:form>   
-                    </div>    
-                                          
+                    </div> 
+                    
+                       
                 </p:layoutUnit>
-
+                
+                <p:layoutUnit position="east" size="200" header="Condições do tempo" collapsible="true">
+                    <div id="condicoes">
+                        <p:growl id="msgs" showDetail="true"  />
+                        
+                            <h:panelGrid>
+                                <p:graphicImage style="width:80px; height:80px" library="imagens" name="#{Indicador.imagem}" />
+                                <table>
+                                    <tr>
+                                        <th>Última atualização:</th>
+                                    </tr>
+                                    <tr>
+                                        <td>#{Indicador.atualizacao}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tempo:</th>
+                                    </tr>
+                                    <tr>
+                                        <td>#{Indicador.condicao}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Temperatura média:</th>
+                                    </tr>
+                                    <tr>
+                                        <td>#{Indicador.temp} °C</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Umidade relativa do ar:</th>
+                                    </tr>
+                                    <tr>
+                                        <td>#{Indicador.umidade} %</td>
+                                    </tr>                              
+                                    <tr>
+                                        <th>Velocidade do vento:</th>
+                                    </tr>
+                                    <tr>
+                                        <td>#{Indicador.vento} km/h</td>
+                                    </tr>                       
+                                </table>
+                            </h:panelGrid>
+                    </div>              
+                </p:layoutUnit>
+                
             </p:layout>
-            
+
         </h:body>
 
     </f:view>

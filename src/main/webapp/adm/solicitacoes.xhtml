@@ -18,18 +18,10 @@
             
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="0" resizable="true" closable="true" collapsible="true">
-                    <p:graphicImage style="width:80px; height:80px" library="imagens" name="logo.png"/>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    
-                </p:layoutUnit>
-               
-                <p:layoutUnit position="west" size="210" header="Servicos" collapsible="true">
-                    <h:form>
+                <p:layoutUnit position="west" size="230" header="Alerta Recife" collapsible="true">
+                    <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife" width="150" height="150"/>                    <h:form>
                     <p:menu>
-                        <p:submenu label="Opções">
+                        <p:submenu label="Solicitações">
                             <p:menuitem value="Voltar" action="/adm/principal.xhtml" />
                             <p:menuitem action="/indexLogin.xhtml" value="Sair" />
                         </p:submenu>
@@ -65,7 +57,7 @@
                                     <h:outputText value="#{sol.tipo}" />
                                 </p:column> 
                                 <p:column style="text-align: center; width: 12%" headerText="Descrição">
-                                    <p:commandButton value="Visualizar" onclick='PF(#{sol.processo}).show();'/>
+                                    <p:commandButton value="Vizualizar" onclick='PF(#{sol.processo}).show();'/>
                                     <p:dialog header="Descrição" appendTo="@(body)" width="500" widgetVar="#{sol.processo}" modal="true" hideEffect="fade" showEffect="fade">
                                          <h:outputText value="#{sol.descricao}" />                        
                                     </p:dialog>                                     

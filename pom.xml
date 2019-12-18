@@ -7,12 +7,16 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>alerta_recife_WEB</name>
+    <name>alerta_recife_WEB_2019-12-18</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <glassfish.embedded-static-shell.jar>C:/Users/rosaa/Desktop/glassfish/4.1.1/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
+        <!--Ajustar com a localização do arquivo no Glassfish-->
+        <!--<glassfish.embedded-static-shell.jar>/home/henrique/glassfish-4.1.1/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>-->
+        <glassfish.embedded-static-shell.jar>/home/italogcc/glassfish/glassfish/lib/embedded/glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>
+        <!--<glassfish.embedded-static-shell.jar>C:\\Programas\\glassfish\\4.1.1\\glassfish\\lib\\embedded\\glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>-->
+        <!--<glassfish.embedded-static-shell.jar>C://Users//rosaa//Desktop//glassfish//4.1.1//glassfish//lib//embedded//glassfish-embedded-static-shell.jar</glassfish.embedded-static-shell.jar>-->
     </properties>
     
     <dependencies>

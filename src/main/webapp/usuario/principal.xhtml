@@ -19,21 +19,12 @@
             
             <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="0" resizable="true" closable="true" collapsible="true">
-                    <p:graphicImage style="width:80px; height:80px" library="imagens" name="logo.png"/>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    
-                </p:layoutUnit>
-
-                
-                <p:layoutUnit position="west" size="210" header="Servicos" collapsible="true">
-                    <h:form>
+                <p:layoutUnit position="west" size="230" header="Alerta Recife" collapsible="true">
+                    <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife" width="150" height="150"/>                    <h:form>
                     <p:menu>
-                        <p:submenu label="Opções">
+                        <p:submenu label="Serviços">
                             <p:menuitem action="/usuario/servico.xhtml" value="Solicitar serviço" />
-                            <p:menuitem value="Contatos" onclick="contatos()" />
+                            <p:menuitem value="Listar contatos" onclick="contatos()" />
                             <p:menuitem action="/usuario/telefone.xhtml" value="Salvar telefone" />
                             <p:menuitem action="/usuario/alterarDados.xhtml" value="Alterar dados pessoais" />
                             <p:menuitem action="/usuario/previsaoTempo.xhtml" value="Previsão do tempo" />

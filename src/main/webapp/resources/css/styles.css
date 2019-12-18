@@ -1,4 +1,13 @@
-  
+body { 
+    font-size:14px;
+    color:#000000;
+    font-family:helvetica, arial, sans-serif;
+    background-color: #FFFFFF;
+    text-align:center; /* hack para o IE */
+    text-justify: auto;
+    margin: 0px;
+}
+
 .ui-fieldset {
     display: inline-block;
     margin-left: 300px;
@@ -6,11 +15,13 @@
 } 
   
 .ui-layout-unit {
-    background: #00CED1
+    
 }
+
 .ui-layout-north .ui-layout-unit-content{
     background: #E8E8E8
 }
+
 .ui-layout-south .ui-layout-unit-content{
     background: #E8E8E8
 }
@@ -24,13 +35,13 @@
 .lonas, .vistorias, .sol {
     font-family: initial; 
     font-weight: bold; 
-    font-size: 22px;    
+    font-size: 20px;    
 }
 
 .resp {
     font-family: initial; 
     font-weight: bold; 
-    font-size: 40px
+    font-size: 22px
 }
 
 .names {
@@ -38,6 +49,7 @@
    min-width: 100%; 
    border: 1px solid black;
 }
+
 .namesHeader {
    min-width: 100%;
    font-size: 25px; 
@@ -45,27 +57,37 @@
    text-align: center;
    font-style: italic;
 }
+
 .nameFooter {
    font-size: 25px;
    border: 1px solid black; 
    font-style: italic;
    font-weight: bold
 }
+
 .last {
    font-size: 25px; 
    border: 1px solid black; 
    height: 25px;
    text-align: center;   
 }
+
 .first {
    font-size: 25px; 
    border: 1px solid black; 
    text-align: center;   
 }
+
 .caption {
         align-content: center;
         color: black;
         font-weight: bold; 
 	font-size: 25px;
 	font-style: italic;
+}
+
+.tempoRot {
+    font-weight: bold;
+    
+    
 }
