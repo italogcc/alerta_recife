@@ -11,11 +11,8 @@ import ifpe.recife.tads.alerta_recife.PontoDeRisco;
 import ifpe.recife.tads.alerta_recife.Solicitacao;
 import ifpe.recife.tads.alerta_recife.Usuario;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
@@ -23,7 +20,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.primefaces.event.SelectEvent;
 
 
 @ManagedBean(name="Endereco")
@@ -108,8 +104,8 @@ public class CadastroEndereco implements Serializable {
         
         return "retornoservico";
     }
-     
-       
+        
+    
     public Endereco getSelected(){
         return selected;
     }

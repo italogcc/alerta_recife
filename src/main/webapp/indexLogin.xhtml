@@ -4,67 +4,39 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+
     <h:head>
         <!--<h:outputStylesheet library="css" name="tabela.css" />-->
         <title>Alerta Recife</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <link href="css/index.css" rel="stylesheet"/>
-        <link href="css/login.css" rel="stylesheet"/>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/recaptcha-api.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     </h:head>
     <h:body onload="#{Login.preencherBanco()}">
-        <nav class="navbar navbar-expand-lg navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <img id="logonImg" src="logo.png"/>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <button type="button" class="btn" onclick='window.location = "index.jsp"' >
-                        Voltar
-                    </button>
-                    <button type="button" class="btn btn-success" onclick='window.location = "indexCadastro.xhtml"'>
-                        Cadastrar-se
-                    </button>  
-                </div>
-            </div>
-        </nav>
-        <div id="mainContainer" class="container-fluid">
-            <h:graphicImage library="imagens" name="logo.png" id="logoARecife" title="Alerta Recife"/>
-            <h4>Alerta Recife</h4>
-            <div>
-                <h:form id="loginForm">
-                    <div id="loginFormInput">
-                    <h:panelGrid id="formlogin">
-                        <h:outputText value="Login:" />
-                        <p:inputText id="email" value="#{Login.email}" />      
-                        <h:outputText value="Senha:" />
-                        <p:password id="senha" value="#{Login.senha}"/>
-                    </h:panelGrid>
-                    </div>
-                    <p></p>
-                    <div class="g-recaptcha" data-sitekey="6LcA4BETAAAAAI-bIVcCocgXyiLZ43bCJ-JyCvWV"></div>
-                    <br/>
-                    <p:commandButton ajax="false" action="#{Login.fazerLogin}" value="Entrar"/>
-                    <br/>
-                    <p:outputLabel binding="#{Login.mybutton}" id="mybutton"/>
-                    <a id="message">
-                        <h:message for="mybutton" />
-                    </a>
-                    <br/>
-                </h:form>
-            </div>
-            <p>
-                <h:link id="cadLink" outcome="indexCadastro" value="Ainda não tem cadastro? Clique aqui!" />
-            </p>
-        </div>
+        <h:graphicImage library="imagens" name="logo.png" id="logoARecife" title="Alerta Recife"/>
+        <h4>Alerta Recife</h4>
+        <h:form>
+            <h:panelGrid id="formlogin">
+                <h:outputText value="Login:" />
+                <p:inputText id="email" value="#{Login.email}" />      
+
+                <h:outputText value="Senha:" />
+                <p:password id="senha" value="#{Login.senha}"/>
+            </h:panelGrid>
+            <p></p>
+            <div class="g-recaptcha" data-sitekey="6LcA4BETAAAAAI-bIVcCocgXyiLZ43bCJ-JyCvWV"></div>
+            <br></br>
+            <p:commandButton ajax="false"
+                     action="#{Login.fazerLogin}" value="Entrar" />
+            <p:outputLabel binding="#{Login.mybutton}" id="mybutton" />
+            <a style="color:red; font-size: 20px"><h:message for="mybutton" /></a>
+            
+        </h:form>
+        
+        
+        <p>
+            <h:link outcome="indexCadastro" value="Ainda não tem cadastro? Clique aqui!" />
+        </p>
+        
     </h:body>
+
 </html>
+

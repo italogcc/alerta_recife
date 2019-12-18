@@ -7,86 +7,58 @@
 
     <h:head>
         <title>Alerta Recife</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="css/bootstrap.min.css"/>
-        <link href="css/index.css" rel="stylesheet"/>
-        <link href="css/cadastro.css" rel="stylesheet"/>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/recaptcha-api.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     </h:head>
     <h:body onload="#{Login.preencherBanco()}">
-        <nav class="navbar navbar-expand-lg navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <img id="logonImg" src="logo.png"/>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <button type="button" class="btn" onclick='window.location = "index.jsp"' >
-                        Voltar
-                    </button>
-                    <button type="button" class="btn btn-success" onclick='window.location = "indexLogin.xhtml"'>
-                        Login
-                    </button>  
-                </div>
-            </div>
-        </nav>
-        <div id="mainContainer" class="container-fluid">
-            <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife"/>
-            <h4>Alerta Recife</h4>
-            Cadastro de novos usuários
-            <h:form id="cadForm">
-                <div id="cadPanel">
-                    <h:panelGrid id="formcadastro">
+        <h:graphicImage library="imagens" name="logo.png" id="logoARecife" class="logoARecife" title="Alerta Recife"/>
+        <h4>Alerta Recife</h4>
+        Cadastro de novos usuários
+        <h:form>
+            <h:panelGrid id="formcadastro">
+                
+                <!--email senha primeiro_nome ultimo_nome habilitado-->                
+                <h:outputText value="Email:" />
+                <p:inputText id="email" maxlength="100" required="true"
+                             value="#{Cadastro.email}" binding="#{Cadastro.campoInvalido}"
+                             requiredMessage=" O campo email deve ser preenchido!" />      
+                <p:message for="email" style="color:red"/>
+                
+                <h:outputText value="Senha:" />
+                
+                <p:password id="senha" maxlength="200" required="true" 
+                            value="#{Cadastro.senha}" feedback="true"
+                            requiredMessage=" O campo senha deve ser preenchido!"
+                            promptLabel="Digite uma senha" weakLabel="Senha fraca"
+                            goodLabel="Senha boa" strongLabel="Senha forte" />
+                <p:message for="senha" style="color:red"/>
+                
+                <h:outputText value="Nome:" />
+                <p:inputText id="primeiro_nome" maxlength="50" required="true" 
+                             requiredMessage=" O campo nome deve ser preenchido!"
+                             value="#{Cadastro.nome}" />
+                <h:message for="primeiro_nome" style="color:red"/>
 
-                        <!--email senha primeiro_nome ultimo_nome habilitado-->                
-                        <h:outputText value="Email:" />
-                        <p:inputText id="email" maxlength="100" required="true"
-                                     value="#{Cadastro.email}" binding="#{Cadastro.campoInvalido}"
-                                     requiredMessage=" O campo email deve ser preenchido!" />      
-                        <p:message class="message" for="email"/>
-
-                        <h:outputText value="Senha:" />
-
-                        <p:password id="senha" maxlength="200" required="true" 
-                                    value="#{Cadastro.senha}" feedback="true"
-                                    requiredMessage=" O campo senha deve ser preenchido!"
-                                    promptLabel="Digite uma senha" weakLabel="Senha fraca"
-                                    goodLabel="Senha boa" strongLabel="Senha forte" />
-                        <p:message class="message" for="senha"/>
-
-                        <h:outputText value="Nome:" />
-                        <p:inputText id="primeiro_nome" maxlength="50" required="true" 
-                                     requiredMessage=" O campo nome deve ser preenchido!"
-                                     value="#{Cadastro.nome}" />
-                        <h:message class="message" for="primeiro_nome"/>
-
-                        <h:outputText value="Sobrenome:" />
-                        <p:inputText id="ultimo_nome" maxlength="50" required="true"
-                                     requiredMessage=" O campo sobrenome deve ser preenchido!"
-                                     value="#{Cadastro.sobrenome}" />
-                        <h:message class="message" for="ultimo_nome"/>              
-
-                    </h:panelGrid>
-                </div>
-                <p></p>
-                <h:outputLabel id="recaptcha">
-                    <div class="g-recaptcha" data-sitekey="6LcA4BETAAAAAI-bIVcCocgXyiLZ43bCJ-JyCvWV"></div>
-                </h:outputLabel>
-                <br></br>
-                <p:commandButton action="#{Cadastro.cadastrar}" ajax="false" value="Cadastrar" />          
-                <h:message for="recaptcha" id="captcha" binding="#{Cadastro.mybutton}" class="message"/>
-                <h:message class="message" for="captcha"/>
-            </h:form>
-
-        </div>
-
+                <h:outputText value="Sobrenome:" />
+                <p:inputText id="ultimo_nome" maxlength="50" required="true"
+                             requiredMessage=" O campo sobrenome deve ser preenchido!"
+                             value="#{Cadastro.sobrenome}" />
+                <h:message for="ultimo_nome" style="color:red"/>              
+                
+            </h:panelGrid>
+            <p></p>
+            <h:outputLabel id="recaptcha">
+                <div class="g-recaptcha" data-sitekey="6LcA4BETAAAAAI-bIVcCocgXyiLZ43bCJ-JyCvWV"></div>
+            </h:outputLabel>
+            <br></br>
+            <p:commandButton action="#{Cadastro.cadastrar}" ajax="false" value="Cadastrar" />          
+            <h:message for="recaptcha" id="captcha" binding="#{Cadastro.mybutton}" style="color:red"/>
+                <h:message for="captcha" style="font-size:20px; color:red"/>
+        </h:form>
+        
+        <p>
+            <h:link outcome="indexLogin" value="Tela de login" />
+        </p>
+        
     </h:body>
 
 </html>
