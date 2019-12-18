@@ -16,8 +16,11 @@
 
                 function loadMapScenario() {
                     
-                    
-                    var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {center: new Microsoft.Maps.Location(-8.0791787, -34.9051573)});
+                    var map;
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        map = new Microsoft.Maps.Map(document.getElementById('myMap'), {center: new Microsoft.Maps.Location(position.coords.latitude,
+                        position.coords.longitude)});
+                    });
                     Microsoft.Maps.loadModule('Microsoft.Maps.DrawingTools', function () {
                         var tools = new Microsoft.Maps.DrawingTools(map);
                         tools.showDrawingManager(function (manager) {
